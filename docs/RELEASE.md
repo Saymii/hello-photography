@@ -2,7 +2,7 @@
 
 ## Signed AAB
 
-1. Choose the permanent application ID before creating the Play app (current development ID is `com.posemaster.app`). Own a privacy-policy URL and support address.
+1. Retain the application ID `com.posemaster.app` for upgrades of existing installs, or plan an explicit new-app migration before any ID change. Own a privacy-policy URL and support address.
 2. In Android Studio: Build → Generate Signed App Bundle / APK → Android App Bundle → create/select a private upload keystore → release variant. Keep the keystore and passwords outside Git and use Play App Signing. The output is `app/build/outputs/bundle/release/app-release.aab`.
 3. For CI, add an environment-backed release signing configuration, supply secrets through a CI secret manager, then run `./gradlew bundleRelease`. Current Gradle intentionally contains no fabricated signing credentials; a plain CLI bundle is unsigned until signing is configured.
 4. Upload to internal testing first. Install via Play and test billing, restoration, consent and offline behavior. Do not distribute the debug key as a release key.
@@ -35,3 +35,8 @@ Current app stores favorites, collection names, interests and theme locally; no 
 - Device test API 26–35+, rotation, process death, offline restart, database persistence, slow/error conditions.
 - Test internal Play install, server entitlements, cancelled/refunded purchases, restores, consent withdrawal.
 - Review crash/ANR, startup, memory and APK size; sign AAB, enable Play App Signing, staged rollout.
+
+
+## Hello Photography upgrade configuration
+
+Role, recent history, bilingual pose text, academy progress and reminders run locally. `HELLO_MONTHLY_PRODUCT` / `HELLO_ANNUAL_PRODUCT` Gradle properties configure subscription catalog queries; neither is a secret. No purchase button grants access: authenticated purchase/restore wiring, verification and RTDN acceptance remain release gates. Beginner courses are open; premium courses remain locked. The free favorite cap is 20 and legacy saved entries are preserved. Daily notification permission is optional and prompted only on opt-in. The app label is Hello Photography; package and database names retain the previous identity for data compatibility.

@@ -36,4 +36,4 @@ fi
 python3 tools/validate_content.py
 (cd backend && npm ci --cache /workspace/tooling/npm-cache && npm test)
 mkdir -p artifacts
-cp app/build/outputs/apk/debug/app-debug.apk artifacts/posemaster-debug.apk
+cp app/build/outputs/apk/debug/app-debug.apk artifacts/HelloPhotography-debug.apk

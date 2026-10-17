@@ -1,27 +1,41 @@
-# Validation – 2026-10-17
+# Validation – Hello Photography 0.2.0 (2026-10-17)
 
-## Passed in this cloud instance
+The upgrade was built and tested in the existing checkout. Package ID, Room database/schema, original pose IDs and debug signing certificate are retained.
 
-- Native Android debug APK assembled with Gradle 8.10.2, Kotlin 1.9.25, AGP 8.7.3, JDK 21, SDK/Build Tools 35.
-- Seven Android tests executed and passed: five structured-filter tests; one Robolectric Compose flow (scrollable onboarding, guest Explore, search, open details, save favorite, Favorites); one Room database reopen/persistence/removal test. No skipped tests.
-- Android lint completed: zero errors, two warnings (explicit Android 12 data-extraction policy recommended; Room supports faster KSP instead of kapt). Warnings were not suppressed.
-- Content validator: 48 original descriptions, 24 categories, stable unique IDs and required fields.
-- Five Node entitlement-policy tests passed; no skipped tests.
-- Backend started locally for a health request and rejected an unauthenticated purchase verification request with HTTP 401; the smoke-test process was stopped. No Firebase or Play API calls were validated.
-- Backend production dependency audit reported zero known vulnerabilities after updating firebase-admin to 14.5.0. This is the audit snapshot, not a guarantee of future advisories.
-- APK package inspected: com.posemaster.app, version 0.1.0, min API 26, target API 35. Android apksigner verified its v2 debug signature.
-- tools/cloud-install.sh completed successfully, including repeat installation, build/check commands and artifact copy. Gradle reused valid outputs on repeat execution. Bootstrap downloads were tested during setup; a brand-new published cloud task has not been independently tested.
+## Passed
 
-APK SHA256: `d89388a60084642fb990b3beeb012150afbd7a8b7642356513c88842588f17e7`
+- `./gradlew --offline --no-daemon assembleDebug testDebugUnitTest lintDebug` completed successfully after the final palette and manifest changes.
+- 42 Android/JVM tests executed, zero failures/errors/skips. Coverage includes real Compose Activity navigation, mandatory role selection, persisted role after recreation, search/detail/favorite flow, Profile role changes and confirmed deletion, Amharic welcome, Room reopen/legacy data preservation, transactional free favorite limits, assistant matching, locale catalog compatibility, notification permissions/channel blocking/deep-link content, academy quiz gating and persistent progress.
+- Five Node entitlement-policy tests passed. No real Google Play purchase or Firebase credential was used.
+- Android lint: zero errors and one unsuppressed warning recommending KSP instead of kapt for Room.
+- Catalog validation passed: 48 original pose descriptions across 24 categories. All 48 IDs have five translated Amharic text fields. Academy contains 9 courses and 27 bilingual lessons with valid quizzes.
+- Android apksigner verified the debug signature; its public certificate matches the previously delivered APK, preserving update compatibility.
+- APK metadata: com.posemaster.app, versionCode 2 / versionName 0.2.0, min API 26, target API 35, four native ABIs.
+- A real headless Android 9 / API 28 x86_64 emulator accepted the APK (`adb install -r`: Success). The native welcome/role screen rendered, including Ethiopic text. A second `adb install -r` of the final APK also succeeded, and the previously selected photographer role remained persisted. Initial software-emulator boot produced System UI restarts/timeouts without KVM; this is not a physical-device performance benchmark. JVM UI flows completed separately.
 
-## Limits and outstanding work
+## Test classes
 
-Robolectric exercises the real Compose Activity and Room stack on the JVM; no physical Android device or emulator installation was tested. This host has no /dev/kvm. Complete rotation/process-death, Android 8–current devices, large text, TalkBack, visual/RTL, and performance acceptance before release.
+- `com.posemaster.app.AcademyFlowTest`: 2 passed
+- `com.posemaster.app.AcademyPersistenceTest`: 3 passed
+- `com.posemaster.app.AppFlowTest`: 4 passed
+- `com.posemaster.app.RoomPersistenceTest`: 1 passed
+- `com.posemaster.app.UpgradeStorageTest`: 5 passed
+- `com.posemaster.app.data.PoseTranslationsTest`: 4 passed
+- `com.posemaster.app.domain.AcademyCatalogTest`: 2 passed
+- `com.posemaster.app.domain.PoseAssistantTest`: 12 passed
+- `com.posemaster.app.domain.PoseFilterTest`: 5 passed
+- `com.posemaster.app.services.DailyInspirationTest`: 4 passed
 
-Reference art is original, explicitly labeled placeholder illustration. It does not demonstrate each exact pose; replace it with licensed reference images for publication. Camera Guide is education, not camera capture.
+## Artifact
 
-Firebase account syncing and remote catalog consumption are not implemented. Admin catalog/image CLIs and authorization-rule drafts are supplied but not live-tested or deployed. No owner Firebase project, storage bucket, Google credentials, Play products or hosted policy/support URLs were supplied.
+`app/build/outputs/apk/debug/app-debug.apk` (22,176,099 bytes)
 
-Play catalog queries, a purchase-verification backend, entitlement-policy tests, and AdMob/UMP test helpers are supplied. Android purchase launch/restoration, RTDN/refund refresh, native/rewarded rendering, client/server wiring and live service acceptance remain required. Ads and purchases are disabled in the normal app. AI is explicitly unconfigured. See RELEASE.md and backend/README.md for exact configuration and implementation gates; adding credentials alone does not complete those features.
+SHA256: `1c8df58ba6daf682bf9a1af28ac470e2a7ba12e3b59c0df63745d446976126f1`
 
-Saved cloud scripts are draft configuration. Publication and restoration in a fresh task are separate actions and have not been verified here.
+Distribution copies: `downloads/HelloPhotography-debug.apk` and the backward-compatible `downloads/PoseMaster-debug.apk` URL. The source archive excludes build caches, credentials and private local configuration.
+
+## Remaining production checks
+
+No physical phone, Google Play internal-test installation, purchase/restore, live AdMob consent/ad delivery, Firebase account sync, remote content publishing or hosted owner policy URLs were validated. Subscription purchase launch/restoration, client/backend entitlement wiring and RTDN/refund refresh remain implementation/release gates; adding credentials alone does not finish them. AdMob/UMP test helpers are prepared, normal-screen ad requests are disabled and measurement initialization is delayed. AI recommendations are explicitly offline rules.
+
+Complete release-device testing on supported Android versions, TalkBack/large text, background notification delivery, lifecycle/process death, performance and a network/Data Safety audit before public release. Have bilingual content reviewed by a native Amharic editor. See RELEASE.md and backend/README.md. No uploaded photos are used.
