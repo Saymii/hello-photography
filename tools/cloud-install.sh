@@ -28,7 +28,7 @@ yes | "$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_H
 pose_license_status=${PIPESTATUS[1]}
 set -o pipefail
 [ "$pose_license_status" -eq 0 ]
-"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_HOME" 'platforms;android-35' 'build-tools;35.0.0' 'platform-tools'
+"$ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager" --sdk_root="$ANDROID_HOME" 'platforms;android-36' 'build-tools;36.0.0' 'platform-tools'
 if [ ! -f local.properties ]; then
   printf 'sdk.dir=%s\n' "$ANDROID_HOME" > local.properties
 fi

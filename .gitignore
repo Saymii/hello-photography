@@ -6,3 +6,9 @@
 /backend/node_modules/
 /.local/
 /artifacts/
+
+*.p12
+*.pfx
+/signing.properties
+/release-signing/
+__pycache__/

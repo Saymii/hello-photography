@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 500" width="1024" height="500">
+<title>Hello Photography original store feature graphic</title>
+<rect width="1024" height="500" fill="#18231f"/><path d="M624 0H1024V500H421Z" fill="#2d4638"/>
+<path d="M48 46H976M48 454H976" stroke="#45604b"/>
+<g transform="translate(58 80) scale(.26)" fill="none" stroke="#dfc68a" stroke-width="9">
+<rect y="32" width="280" height="192" rx="30"/><rect x="66" width="92" height="38" rx="10" fill="#dfc68a" stroke="none"/>
+<circle cx="140" cy="130" r="61"/><circle cx="140" cy="130" r="37" stroke="#f9f6ee" stroke-width="3"/>
+<circle cx="237" cy="70" r="8" fill="#dfc68a" stroke="none"/><path d="M118 119L140 101L159 117M119 141L140 157L160 140" stroke-width="4"/></g>
+<g fill="#f9f6ee" font-family="DejaVu Sans,sans-serif" font-weight="bold"><text x="48" y="240" font-size="62">Hello</text><text x="48" y="307" font-size="58">Photography</text></g>
+<text x="51" y="376" font-size="20" font-family="DejaVu Sans,sans-serif" fill="#dfc68a">Learn to pose. Capture better photos.</text>
+<text x="51" y="405" font-size="12" font-family="DejaVu Sans,sans-serif" fill="#f9f6ee" font-weight="bold">YOUR NEXT GREAT FRAME</text>
+<rect x="727" y="82" width="217" height="335" rx="26" stroke="#9eaa86" stroke-width="2" fill="none"/>
+<path d="M749 337H917" stroke="#668064"/><ellipse cx="831.5" cy="156" rx="26.5" ry="28" fill="none" stroke="#dfc68a" stroke-width="4"/>
+<path d="M828 185L822 244L855 277L873 348M822 244L791 289L779 353" fill="none" stroke="#dfc68a" stroke-width="5"/>
+<path d="M826 204L787 229L773 202M836 207L875 230L891 199" fill="none" stroke="#f9f6ee" stroke-width="4"/>
+<path d="M750 104H766V120M921 394H905V378" fill="none" stroke="#dfc68a" stroke-width="2"/></svg>

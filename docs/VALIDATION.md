@@ -1,6 +1,113 @@
-# Validation – Hello Photography 0.2.0 (2026-10-17)
+# Validation – Hello Photography
 
-The upgrade was built and tested in the existing checkout. Package ID, Room database/schema, original pose IDs and debug signing certificate are retained.
+## Play release 1.0.0 (2026-10-17)
+
+Built the actual native app in the existing checkout with application ID
+`com.saymii.hellophotography`, version `1.0.0` / code `3`, minimum API 26,
+compile/target API 36, Build Tools 36.0.0, AGP 8.10.1, Gradle 8.11.1,
+JDK 21 and Billing 9.1.0. Debug identity is
+`com.saymii.hellophotography.debug` / `1.0.0-dev`.
+
+### Passed on the final source
+
+- Signed build: `assembleDebug testDebugUnitTest lintDebug bundleRelease lintRelease`,
+  with upload credentials supplied privately through `tools/with-upload-signing.py`.
+  Final run completed successfully in 2m 33s.
+- **43 Android/JVM tests**, zero failures/errors/skips, current XML timestamps
+  20:54:56–20:55:23 UTC. Includes all 42 prior functional/storage tests and the
+  six-screen actual Activity screenshot flow. The screenshot harness uses native
+  Android Canvas with Robolectric API 34; it does not exercise the minified APK.
+- **Five backend entitlement-policy tests** passed. These are policy unit tests,
+  without a live Play API, Firebase account, or deployed service.
+- Content validation: 48 original guides across 24 categories, all 48 translated
+  Amharic records. Four premium-labeled sample guides are free previews; premium
+  Academy lessons stay locked. No chat-uploaded photographs are used.
+- Debug and release lint: **zero errors, 14 advisory warnings each**. Warnings
+  cover a newer debug-only Ads SDK, KSP/ktx recommendations, an unnecessary v26
+  resource qualifier and unused legacy icon. None were suppressed. Gradle also
+  reports future Gradle 9 deprecations; this project pins Gradle 8.11.1.
+- The no-credentials signing guard failed as expected and named the four missing
+  signing variables; it did not produce an unsigned release.
+- `bundletool` 1.18.1 validated the final AAB. `jarsigner` reports `jar verified`;
+  the self-signed upload certificate/absent timestamp warnings are expected for
+  this private upload key. The certificate matches the public PEM below.
+- AAB manifest: correct package/version/API, non-debuggable, backups disabled,
+  Billing version 9.1.0, no ad provider or advertising-ID permission. Final release
+  runtime dependency report excludes AdMob, UMP, Firebase Analytics and Crashlytics.
+  Billing's shared Google transport/base libraries remain; this is not a network
+  traffic audit or a blanket no-data-collection declaration.
+- A universal APK was generated **from this final AAB**, signed with the upload
+  key, and verified by Android `apksigner` (v2/v3 signatures). `aapt2` confirms
+  package/version, min API 26 and target 36, with no debuggable flag.
+- AAB config declares `PAGE_ALIGNMENT_16K`; all four native
+  `libandroidx.graphics.path.so` ABIs have every ELF LOAD aligned to `0x4000`.
+  Libraries are stored uncompressed in the generated APK; `zipalign -c -P 16 -v 4`
+  passes. These are structural checks, not a 16 KB runtime test.
+- Six reviewed actual UI renders, 824 × 1600 opaque RGB PNG, are in
+  `store-listing/screenshots/phone/`; checksums/provenance accompany them. Icon is
+  original 512 × 512 RGBA (fully opaque); feature graphic is original 1024 × 500 RGB.
+
+### Final artifacts
+
+| File | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `release/HelloPhotography-1.0.0.aab` | 3,638,220 | `c394265608f3081c2d3e107aca3923e4593138362630fbc223bb8885d356e984` |
+| `release/HelloPhotography-1.0.0-test.apk` | 1,654,814 | `92906822d1202599e9b72e848a601592975158f2aeeafd1a9475613102a75921` |
+
+Build output is also `app/build/outputs/bundle/release/app-release.aab`.
+`release/SHA256SUMS` includes the public upload certificate file checksum.
+Upload certificate: RSA 3072, SHA256withRSA, expires 2054-03-04.
+Public certificate SHA-256:
+`25:95:ED:38:96:E3:6C:CD:99:A6:58:B6:32:70:B1:95:7D:F7:8E:F3:EA:F3:0A:37:F8:82:58:A5:AB:FB:A4:53`.
+The private key/password backup is outside the repository and must never be added
+or uploaded as a public release asset. A source checkout does not contain it.
+
+### Native release smoke test
+
+A real Android 9 / API 28 x86_64 emulator ran without KVM. The installed
+`base.apk` was pulled back from the emulator and its SHA-256 matched the final
+delivered APK exactly (`92906822…02a75921`). Android `am start -W` reported
+`Status: ok` for the release Activity; the welcome screen rendered and the
+Photographer selection and Continue responded, and a pose detail (Clean backdrop)
+opened from the personalized home. After force-stop/relaunch, the Photographer
+role remained selected and its personalized home rendered. No app fatal exception appeared in the
+AndroidRuntime log inspected after launch.
+
+Actual release captures are retained in `docs/device-validation/` (welcome, personalized home and
+pose detail), copied without pixel edits from ADB screencap.
+
+Both ADB install attempts timed out during the slow software boot; the exact
+installed-file hash establishes the outcome instead of claiming a successful
+ADB exit. The emulator also displayed a System UI ANR during startup, which was
+dismissed before checking the app. This is a limited release runtime smoke test,
+not a physical-device performance benchmark, complete device test, or 16 KB test.
+
+### Remaining release gates
+
+No Google Play upload/acceptance, public privacy-policy hosting, real purchase,
+cloud account, production ad, physical-device test, modern Android/16 KB runtime
+or Play pre-launch report has been completed. Current policy hosts were blocked
+by the environment proxy; verify current Console deadlines and account-specific
+requirements using [PLAY_REQUIREMENTS.md](PLAY_REQUIREMENTS.md).
+
+The software-only API 28 emulator is slow and is not a performance benchmark.
+The limited native release smoke test above remains separate from the JVM
+tests and historical debug results. Capture release screenshots from a Play internal-track
+installation before production submission. Review large text/TalkBack, rotation,
+notification delivery/denial, process death, offline persistence and network/Data
+Safety behavior on supported devices. Have Amharic content reviewed by an editor.
+
+New Play/debug packages install separately from legacy `com.posemaster.app`.
+Legacy data stays in that installation; no automatic package migration is claimed.
+Purchases remain disabled; client purchase/restore and verified entitlement wiring,
+backend deployment and RTDN/refund handling remain implementation/release gates.
+
+## Historical validation – Hello Photography 0.2.0 (2026-10-17)
+
+The 0.2.0 upgrade was built and tested in the existing checkout. At that time,
+package ID `com.posemaster.app`, Room database/schema, original pose IDs and the
+debug signing certificate were retained. The checks and artifacts in this
+historical section refer to that version only.
 
 ## Passed
 

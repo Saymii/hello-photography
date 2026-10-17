@@ -28,7 +28,7 @@ import com.posemaster.app.domain.Pose
 
 /** Original vector artwork, drawn locally. It does not use or imitate uploaded photographs. */
 @Composable
-fun OriginalPoseArt(pose: Pose, modifier: Modifier = Modifier) {
+fun OriginalPoseArt(pose: Pose, modifier: Modifier = Modifier, showLabel: Boolean = true) {
     val palette = artPalettes[Math.floorMod(pose.id, artPalettes.size)]
     Box(modifier.semantics(mergeDescendants = true) { contentDescription = poseArtDescription(pose) }) {
         Canvas(Modifier.matchParentSize()) {
@@ -61,13 +61,14 @@ fun OriginalPoseArt(pose: Pose, modifier: Modifier = Modifier) {
                 drawLine(ink, Offset(282f, 18f), Offset(266f, 18f), 1f)
             }
         }
-        Text(
+        if (showLabel) Text(
             "Original illustration",
             modifier = Modifier.align(Alignment.BottomStart).padding(10.dp)
                 .background(Color(0xE6222928), RoundedCornerShape(20.dp)).padding(horizontal = 9.dp, vertical = 4.dp),
             style = MaterialTheme.typography.labelSmall,
             color = Color.White,
-            fontSize = 10.sp
+            fontSize = 10.sp,
+            maxLines = 1
         )
     }
 }

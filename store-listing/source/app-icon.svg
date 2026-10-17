@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+<title>Hello Photography original app icon</title>
+<rect width="512" height="512" fill="#18231f"/><path d="M0 360L512 70V512H0Z" fill="#2d4638"/>
+<circle cx="256" cy="256" r="222" fill="none" stroke="#3c5142"/>
+<g transform="translate(116 124)" fill="none" stroke="#dfc68a" stroke-width="9">
+<rect x="0" y="32" width="280" height="192" rx="30"/>
+<rect x="66" y="0" width="92" height="38" rx="10" fill="#dfc68a" stroke="none"/>
+<circle cx="140" cy="130" r="61"/><circle cx="140" cy="130" r="37" stroke="#f9f6ee" stroke-width="3"/>
+<circle cx="237" cy="70" r="8" fill="#dfc68a" stroke="none"/>
+<path d="M118 119L140 101L159 117M119 141L140 157L160 140" stroke-width="4"/></g>
+<path d="M198 399L256 410L314 399" fill="none" stroke="#dfc68a" stroke-width="4"/></svg>

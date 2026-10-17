@@ -3,6 +3,8 @@
 export JAVA_HOME=/workspace/tooling/jdk
 export ANDROID_HOME=/workspace/tooling/android-sdk
 export ANDROID_USER_HOME=/workspace/tooling/android-user
+export ANDROID_EMULATOR_HOME=/workspace/tooling/emulator-home
+export ANDROID_AVD_HOME=/workspace/tooling/avd
 export GRADLE_USER_HOME=/workspace/tooling/gradle-home
 export PATH="$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$PATH"
 export JAVA_TOOL_OPTIONS="${JAVA_TOOL_OPTIONS:-} -Duser.home=/workspace/tooling/java-user -Djavax.net.ssl.trustStore=/etc/ssl/certs/java/cacerts"

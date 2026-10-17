@@ -35,7 +35,7 @@ val HelloGold=Color(0xFFD9BD86)
  Card(onClick={onOpen(pose.id)},shape=RoundedCornerShape(22.dp),modifier=Modifier.fillMaxWidth()) {
   if(featured) OriginalPoseArt(pose,Modifier.fillMaxWidth().height(260.dp))
   Row(Modifier.padding(16.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(14.dp)) {
-   if(!featured) OriginalPoseArt(pose,Modifier.size(88.dp))
+   if(!featured) OriginalPoseArt(pose,Modifier.size(88.dp),showLabel=false)
    Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(4.dp)) {
     Text(categoryLabel(pose.category,language),style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.primary)
     Text(pose.name,fontFamily=FontFamily.Serif,fontSize=21.sp)

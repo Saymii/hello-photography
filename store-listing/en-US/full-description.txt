@@ -1,0 +1,29 @@
+Learn to pose. Capture better photos. Look amazing.
+
+Hello Photography helps photographers, models, and everyone find direction before the next photo. Explore an original illustrated posing library and build photography skills with practical lessons.
+
+CHOOSE YOUR PERSPECTIVE
+Select Photographer, Model, or Everyone to personalize your home screen. Change your role anytime in Profile.
+
+FIND A POSE FOR THE MOMENT
+Browse 48 original sample guides for portraits, couples, weddings, graduation, birthdays, fashion, selfies, seated poses, and more. Search by name or category and filter by subject, style, location, position, and experience.
+
+FOLLOW CLEAR DIRECTIONS
+Each guide includes body positioning, expression, hands, feet, camera angle, lighting, and common mistakes. Reference images are clearly identified original illustrations, not photographs.
+
+LEARN BY DOING
+Explore smartphone photography, cameras, lighting, composition, portraits, model direction, editing, and Lightroom basics. Follow 24 free lessons across eight courses, try short quizzes, and keep track of your progress on your device. A photography business course is available as a premium syllabus preview.
+
+GET PRACTICAL RECOMMENDATIONS
+The pose assistant matches your preferences using offline rules. It does not require an AI account and does not claim to generate answers with an AI model.
+
+SAVE YOUR INSPIRATION
+Keep up to 20 favorites on the free plan, organize collections, revisit recent guides, and share posing tips. The bundled sample library works offline. Saved collections and learning progress remain on your device after restarting the app.
+
+MAKE IT YOURS
+Choose English or Amharic and use light, dark, or system appearance. Daily inspiration reminders are optional. You can delete locally saved data from Profile.
+
+PREMIUM AVAILABILITY
+This release includes premium syllabus previews alongside the free sample library. Subscriptions are not enabled in the supplied build, and paid access cannot be unlocked. Future premium purchases require Google Play configuration, secure purchase verification, and release testing.
+
+Hello Photography does not need access to your photo library or camera for its illustrated guides. No account is required for the local learning experience.

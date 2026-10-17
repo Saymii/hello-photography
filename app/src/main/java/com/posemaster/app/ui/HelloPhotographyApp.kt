@@ -1,6 +1,9 @@
 package com.posemaster.app.ui
 
 import android.content.Intent
+import androidx.activity.ComponentActivity
+import androidx.activity.SystemBarStyle
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -36,6 +39,14 @@ import com.posemaster.app.domain.*
  val translations=remember {PoseTranslations(context)}
  val language=settings.language
  val dark=settings.theme=="Dark" || settings.theme=="System" && isSystemInDarkTheme()
+ // Android 15/16 draw behind system bars. Keep their icons readable when the
+ // app theme differs from the device theme, including after a settings change.
+ SideEffect {
+  (context as? ComponentActivity)?.enableEdgeToEdge(
+   statusBarStyle=SystemBarStyle.auto(android.graphics.Color.TRANSPARENT,android.graphics.Color.TRANSPARENT){dark},
+   navigationBarStyle=SystemBarStyle.auto(0xE6FFFFFF.toInt(),0x801B1B1B.toInt()){dark}
+  )
+ }
  val palette=if(dark) darkColorScheme(
   primary=HelloGold,onPrimary=Color(0xFF231D12),primaryContainer=Color(0xFF4A442F),onPrimaryContainer=Color(0xFFF9E9BE),
   secondary=Color(0xFFB4CABB),onSecondary=Color(0xFF1A3727),secondaryContainer=Color(0xFF2C3A31),onSecondaryContainer=Color(0xFFDEEADF),
