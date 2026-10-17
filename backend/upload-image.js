@@ -1,0 +1,23 @@
+/** Privileged image uploader; requires actual redistribution license evidence. */
+import {readFile,stat} from 'node:fs/promises';
+import {randomUUID,createHash} from 'node:crypto';
+import {initializeApp,applicationDefault} from 'firebase-admin/app';
+import {getStorage} from 'firebase-admin/storage';
+import {getFirestore,FieldValue} from 'firebase-admin/firestore';
+const [imagePath,licensePath]=process.argv.slice(2);
+if(!imagePath || !licensePath || !process.env.CONTENT_BUCKET) throw new Error('Set CONTENT_BUCKET; node upload-image.js image.webp license.json');
+const license=JSON.parse(await readFile(licensePath,'utf8'));
+if(!license.source || !license.permission || !license.owner) throw new Error('License source, permission and owner are required');
+const info=await stat(imagePath);
+if(!info.isFile() || info.size>10*1024*1024) throw new Error('Expected image <=10 MB');
+const bytes=await readFile(imagePath);
+const png=bytes.subarray(0,8).equals(Buffer.from([137,80,78,71,13,10,26,10]));
+const jpeg=bytes[0]===255 && bytes[1]===216 && bytes[2]===255;
+const webp=bytes.subarray(0,4).toString()==='RIFF' && bytes.subarray(8,12).toString()==='WEBP';
+if(!png && !jpeg && !webp) throw new Error('Only PNG, JPEG or WebP image signatures are accepted');
+const contentType=png?'image/png':jpeg?'image/jpeg':'image/webp';
+initializeApp({credential:applicationDefault(),storageBucket:process.env.CONTENT_BUCKET});
+const id=randomUUID(),storagePath=`draft-images/${id}`;
+await getStorage().bucket().file(storagePath).save(bytes,{resumable:false,metadata:{contentType,cacheControl:'private,max-age=0'}});
+await getFirestore().collection('imageLicenses').doc(id).set({storagePath,license,sha256:createHash('sha256').update(bytes).digest('hex'),uploadedAt:FieldValue.serverTimestamp(),published:false});
+console.log(JSON.stringify({id,storagePath,published:false}));

@@ -1,0 +1,7 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Private draft assets. Access only through an authorized server or privileged IAM operator.
+    match /{path=**} { allow read, write: if false; }
+  }
+}

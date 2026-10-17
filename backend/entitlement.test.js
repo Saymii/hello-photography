@@ -1,0 +1,10 @@
+import {test} from 'node:test';
+import assert from 'node:assert/strict';
+import {deriveEntitlement} from './entitlement.js';
+const now=1_000_000;
+const sub=(state='SUBSCRIPTION_STATE_ACTIVE',expiry=now+1000,productId='monthly')=>({subscriptionState:state,lineItems:[{productId,expiryTime:new Date(expiry).toISOString()}]});
+test('active matching subscriptions grant access until expiry',()=>assert.deepEqual(deriveEntitlement(sub(),['monthly'],now),{premium:true,expiresAtEpochMillis:now+1000}));
+test('expired subscriptions do not grant access',()=>assert.equal(deriveEntitlement(sub(undefined,now-1),['monthly'],now).premium,false));
+test('pending and on hold do not grant access',()=>{for(const state of ['SUBSCRIPTION_STATE_PENDING','SUBSCRIPTION_STATE_ON_HOLD']) assert.equal(deriveEntitlement(sub(state),['monthly'],now).premium,false)});
+test('cancelled subscription keeps remaining paid period',()=>assert.equal(deriveEntitlement(sub('SUBSCRIPTION_STATE_CANCELED'),['monthly'],now).premium,true));
+test('unknown products and malformed dates fail closed',()=>{assert.equal(deriveEntitlement(sub(),['annual'],now).premium,false);assert.equal(deriveEntitlement({subscriptionState:'SUBSCRIPTION_STATE_ACTIVE',lineItems:[{productId:'monthly',expiryTime:'invalid'}]},['monthly'],now).premium,false)});
