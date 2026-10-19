@@ -1,12 +1,12 @@
 # Adding the new 48-photo collection
 
-The owner plans to provide a new set of 48 pose photographs for Hello Photography. Twenty-seven files have arrived: male 01–12, female 01–10 and the earlier numbered 44–48. This is a new batch: photographs uploaded earlier in the conversation, including the earlier RAR archive, remain excluded from the app and from visual inspiration.
+The owner plans to provide a new set of 48 pose photographs for Hello Photography. Thirty-two files have arrived: male 01–12, female 01–10, couple 01–05 and the earlier numbered 44–48. This is a new batch: photographs uploaded earlier in the conversation, including the earlier RAR archive, remain excluded from the app and from visual inspiration.
 
 The current app continues to use its 48 original written guides and Compose illustrations. Receipt of a file does not make it part of a release. The new photos need a complete number-to-pose manifest, redistribution permission and reviewed instructions before they are bundled. Keep pending uploads outside the Git repository and release archives.
 
 ## Sending the rest of the batch
 
-Keep the existing series names and numbers and send the remaining files in any order. A single ZIP with named images is convenient; several smaller batches also work. Male and female filenames have separate numbering: `male_pose_01.jpg` and `female_pose_01.jpg` are different photos. Keep filenames descriptive and do not renumber files after an upload. Keep the highest-quality originals separately. The total collection is planned to contain 48 photos; counts per series have not been specified.
+Keep the existing series names and numbers and send the remaining files in any order. A single ZIP with named images is convenient; several smaller batches also work. Male, female and couple filenames have separate numbering: `male_pose_01.jpg`, `female_pose_01.jpg` and `couple_pose_01.jpg` are different photos. Keep filenames descriptive and do not renumber files after an upload. Keep the highest-quality originals separately. The total collection is planned to contain 48 photos; counts per series have not been specified.
 
 Received filenames establish this proposed mapping, not a replacement for existing guides:
 
@@ -34,19 +34,24 @@ Received filenames establish this proposed mapping, not a replacement for existi
 | Female | 08 | 2008 | female_pose_08.jpg |
 | Female | 09 | 2009 | female_pose_09.jpg |
 | Female | 10 | 2010 | female_pose_10.jpg |
+| Couple | 01 | 3001 | couple_pose_01.jpg |
+| Couple | 02 | 3002 | couple_pose_02.jpg |
+| Couple | 03 | 3003 | couple_pose_03.jpg |
+| Couple | 04 | 3004 | couple_pose_04.jpg |
+| Couple | 05 | 3005 | couple_pose_05.jpg |
 | Numbered | 44 | 1044 | Relaxed Railing Lookout |
 | Numbered | 45 | 1045 | Looking up from a book |
 | Numbered | 46 | 1046 | Casual tote bag walk, sideways glance |
 | Numbered | 47 | 1047 | Relaxed chair pose, chin in hand |
 | Numbered | 48 | 1048 | Relaxed three-quarter wave portrait |
 
-Another 21 photos are needed to reach 48. Their exact series and filenames are pending; the old global missing-number range no longer applies. Additional delivery of the same series and number should be treated as an explicit revision, not a second pose. Compare file hashes to catch duplicates and keep a record of which revision was approved.
+Another 16 photos are needed to reach 48. Their exact series and filenames are pending; the old global missing-number range no longer applies. Additional delivery of the same series and number should be treated as an explicit revision, not a second pose. Compare file hashes to catch duplicates and keep a record of which revision was approved.
 
 ## Identity and existing saved data
 
 Existing pose IDs 1–48 identify specific original guides. Favorites, recently viewed guides and deep links rely on those IDs. Do not attach a new numbered photo to an existing guide merely because its filename ends with the same number: the movements and meaning can differ.
 
-Male files retain their proposed IDs **1001–1012**. Female files use **2001–2010**, calculated as `2000 + female photo number`, so they cannot overwrite male guides with the same filename number. The earlier numbered 44–48 retain IDs **1044–1048**. Use collection ID `owner-photo-set-2026-10`. Assign further IDs without collisions and keep each identity fixed after publication. A revised photo can update the same guide only if it demonstrates the same pose; a different pose receives a new unused ID. A collection ID describes the editorial photo set and is separate from a user's named favorites collection in Room.
+Male files retain their proposed IDs **1001–1012**. Female files use **2001–2010**, calculated as `2000 + female photo number`. Couple files use **3001–3005**, calculated as `3000 + couple photo number`. Each series keeps its own identity without overwriting another guide with the same filename number. The earlier numbered 44–48 retain IDs **1044–1048**. Use collection ID `owner-photo-set-2026-10`. Assign further IDs without collisions and keep each identity fixed after publication. A revised photo can update the same guide only if it demonstrates the same pose; a different pose receives a new unused ID. A collection ID describes the editorial photo set and is separate from a user's named favorites collection in Room.
 
 If a new image truly matches an existing guide, a reviewed decision can attach it to that existing ID without changing the guide's meaning. Do not do that automatically. Retain the existing guides and favorites while the new collection is prepared.
 
@@ -93,7 +98,7 @@ The existing validation command is `python3 tools/validate_content.py`. It check
 
 ## Current pending items
 
-- Another 21 photos, their series/number mapping and confirmation that the complete set has been sent.
+- Another 16 photos, their series/number mapping and confirmation that the complete set has been sent.
 - Rights, redistribution terms, required credit and any use restrictions for this new batch.
 - Final number-to-guide mapping, original instructions and translation review.
 - Asset import, build/device checks and a rebuilt release containing the approved collection.
@@ -104,7 +109,7 @@ This document provides a batch workflow and proposed metadata. It does not claim
 
 Run `python3 tools/stage_photo_batch.py <attachment-directory> /workspace/hello-photography-photo-intake`
 to collect the next numbered batch. This helper verifies image files, records
-SHA-256/dimensions, distinguishes male/female/unnamed numbered series, preserves
+SHA-256/dimensions, distinguishes male/female/couple/unnamed numbered series, preserves
 earlier file paths and IDs, and reports the remaining photo count. Its manifest
 records received numbers by series rather than an incorrect global missing range.
 Conflicting replacements, duplicate identities and pose-ID collisions require review. It
