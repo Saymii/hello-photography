@@ -1,6 +1,6 @@
 # Adding the new 48-photo collection
 
-The owner plans to provide a new set of 48 pose photographs for Hello Photography. Fifteen files have arrived, numbered 01–10 and 44–48. This is a new batch: photographs uploaded earlier in the conversation, including the earlier RAR archive, remain excluded from the app and from visual inspiration.
+The owner plans to provide a new set of 48 pose photographs for Hello Photography. Seventeen files have arrived, numbered 01–12 and 44–48. This is a new batch: photographs uploaded earlier in the conversation, including the earlier RAR archive, remain excluded from the app and from visual inspiration.
 
 The current app continues to use its 48 original written guides and Compose illustrations. Receipt of a file does not make it part of a release. The new photos need a complete number-to-pose manifest, redistribution permission and reviewed instructions before they are bundled. Keep pending uploads outside the Git repository and release archives.
 
@@ -22,13 +22,15 @@ Received filenames establish this proposed mapping, not a replacement for existi
 | 08 | 1008 | male_pose_08.jpg |
 | 09 | 1009 | male_pose_09.jpg |
 | 10 | 1010 | male_pose_10.jpg |
+| 11 | 1011 | male_pose_11.jpg |
+| 12 | 1012 | male_pose_12.jpg |
 | 44 | 1044 | Relaxed Railing Lookout |
 | 45 | 1045 | Looking up from a book |
 | 46 | 1046 | Casual tote bag walk, sideways glance |
 | 47 | 1047 | Relaxed chair pose, chin in hand |
 | 48 | 1048 | Relaxed three-quarter wave portrait |
 
-Numbers 11–43 are still pending (33 photos). Additional delivery of a number already received should be treated as an explicit revision, not a second pose. Compare file hashes to catch duplicates and keep a record of which revision was approved.
+Numbers 13–43 are still pending (31 photos). Additional delivery of a number already received should be treated as an explicit revision, not a second pose. Compare file hashes to catch duplicates and keep a record of which revision was approved.
 
 ## Identity and existing saved data
 
@@ -81,7 +83,7 @@ The existing validation command is `python3 tools/validate_content.py`. It check
 
 ## Current pending items
 
-- Remaining photos 11–43 and confirmation that the complete set has been sent.
+- Remaining photos 13–43 and confirmation that the complete set has been sent.
 - Rights, redistribution terms, required credit and any use restrictions for this new batch.
 - Final number-to-guide mapping, original instructions and translation review.
 - Asset import, build/device checks and a rebuilt release containing the approved collection.
