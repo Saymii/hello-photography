@@ -1,42 +1,47 @@
 # Adding the new 48-photo collection
 
-The owner plans to provide a new set of 48 pose photographs for Hello Photography. Seventeen files have arrived, numbered 01–12 and 44–48. This is a new batch: photographs uploaded earlier in the conversation, including the earlier RAR archive, remain excluded from the app and from visual inspiration.
+The owner plans to provide a new set of 48 pose photographs for Hello Photography. Twenty-two files have arrived: male 01–12, female 01–05 and the earlier numbered 44–48. This is a new batch: photographs uploaded earlier in the conversation, including the earlier RAR archive, remain excluded from the app and from visual inspiration.
 
 The current app continues to use its 48 original written guides and Compose illustrations. Receipt of a file does not make it part of a release. The new photos need a complete number-to-pose manifest, redistribution permission and reviewed instructions before they are bundled. Keep pending uploads outside the Git repository and release archives.
 
 ## Sending the rest of the batch
 
-Keep the existing numbers and send the remaining files in any order. A single ZIP with numbered images is convenient; several smaller batches also work. Use one image for each number 01–48, for example `01-short-pose-name.jpg`. Keep the filenames descriptive and do not renumber files after an upload. Keep the highest-quality originals separately.
+Keep the existing series names and numbers and send the remaining files in any order. A single ZIP with named images is convenient; several smaller batches also work. Male and female filenames have separate numbering: `male_pose_01.jpg` and `female_pose_01.jpg` are different photos. Keep filenames descriptive and do not renumber files after an upload. Keep the highest-quality originals separately. The total collection is planned to contain 48 photos; counts per series have not been specified.
 
 Received filenames establish this proposed mapping, not a replacement for existing guides:
 
-| Batch number | Proposed stable pose ID | Supplied title |
-| --- | --- | --- |
-| 01 | 1001 | male_pose_01.jpg |
-| 02 | 1002 | male_pose_02.jpg |
-| 03 | 1003 | male_pose_03.jpg |
-| 04 | 1004 | male_pose_04.jpg |
-| 05 | 1005 | male_pose_05.jpg |
-| 06 | 1006 | male_pose_06.jpg |
-| 07 | 1007 | male_pose_07.jpg |
-| 08 | 1008 | male_pose_08.jpg |
-| 09 | 1009 | male_pose_09.jpg |
-| 10 | 1010 | male_pose_10.jpg |
-| 11 | 1011 | male_pose_11.jpg |
-| 12 | 1012 | male_pose_12.jpg |
-| 44 | 1044 | Relaxed Railing Lookout |
-| 45 | 1045 | Looking up from a book |
-| 46 | 1046 | Casual tote bag walk, sideways glance |
-| 47 | 1047 | Relaxed chair pose, chin in hand |
-| 48 | 1048 | Relaxed three-quarter wave portrait |
+| Series | Photo number | Proposed stable pose ID | Supplied title |
+| --- | --- | --- | --- |
+| Male | 01 | 1001 | male_pose_01.jpg |
+| Male | 02 | 1002 | male_pose_02.jpg |
+| Male | 03 | 1003 | male_pose_03.jpg |
+| Male | 04 | 1004 | male_pose_04.jpg |
+| Male | 05 | 1005 | male_pose_05.jpg |
+| Male | 06 | 1006 | male_pose_06.jpg |
+| Male | 07 | 1007 | male_pose_07.jpg |
+| Male | 08 | 1008 | male_pose_08.jpg |
+| Male | 09 | 1009 | male_pose_09.jpg |
+| Male | 10 | 1010 | male_pose_10.jpg |
+| Male | 11 | 1011 | male_pose_11.jpg |
+| Male | 12 | 1012 | male_pose_12.jpg |
+| Female | 01 | 2001 | female_pose_01.jpg |
+| Female | 02 | 2002 | female_pose_02.jpg |
+| Female | 03 | 2003 | female_pose_03.jpg |
+| Female | 04 | 2004 | female_pose_04.jpg |
+| Female | 05 | 2005 | female_pose_05.jpg |
+| Numbered | 44 | 1044 | Relaxed Railing Lookout |
+| Numbered | 45 | 1045 | Looking up from a book |
+| Numbered | 46 | 1046 | Casual tote bag walk, sideways glance |
+| Numbered | 47 | 1047 | Relaxed chair pose, chin in hand |
+| Numbered | 48 | 1048 | Relaxed three-quarter wave portrait |
 
-Numbers 13–43 are still pending (31 photos). Additional delivery of a number already received should be treated as an explicit revision, not a second pose. Compare file hashes to catch duplicates and keep a record of which revision was approved.
+Another 26 photos are needed to reach 48. Their exact series and filenames are pending; the old global missing-number range no longer applies. Additional delivery of the same series and number should be treated as an explicit revision, not a second pose. Compare file hashes to catch duplicates and keep a record of which revision was approved.
 
 ## Identity and existing saved data
 
 Existing pose IDs 1–48 identify specific original guides. Favorites, recently viewed guides and deep links rely on those IDs. Do not attach a new numbered photo to an existing guide merely because its filename ends with the same number: the movements and meaning can differ.
 
-Reserve IDs **1001–1048** for this new set, with `stable ID = 1000 + batch number`. Use collection ID `owner-photo-set-2026-10`. These numbers remain fixed after publication. A revised photo can update the same guide only if it demonstrates the same pose; a different pose receives a new unused ID. A collection ID describes the editorial photo set and is separate from a user's named favorites collection in Room.
+Male files retain their proposed IDs **1001–1012**. Female files use **2001–2005**, calculated as `2000 + female photo number`, so they cannot overwrite male guides with the same filename number. The earlier numbered 44–48 retain IDs **1044–1048**. Use collection ID `owner-photo-set-2026-10`. Assign further IDs without collisions and keep each identity fixed after publication. A revised photo can update the same guide only if it demonstrates the same pose; a different pose receives a new unused ID. A collection ID describes the editorial photo set and is separate from a user's named favorites collection in Room.
 
 If a new image truly matches an existing guide, a reviewed decision can attach it to that existing ID without changing the guide's meaning. Do not do that automatically. Retain the existing guides and favorites while the new collection is prepared.
 
@@ -71,7 +76,7 @@ The latest message authorizes preparing this new batch for the app. Explicit rig
 
 ## Import and review workflow
 
-1. Inventory the received files outside Git: batch number, original filename, dimensions, SHA-256, revision and permission status. Reconcile all numbers 01–48 before publishing the collection; do not silently fill missing numbers with older uploads.
+1. Inventory the received files outside Git: series, photo number, original filename, dimensions, SHA-256, revision and permission status. Reconcile all 48 unique photographs and the final series-to-guide mapping before publishing the collection; do not silently fill missing photos with older uploads.
 2. Match each approved photo to a guide. Write useful instructions describing the visible action, hands, feet and face. Add camera-angle and lighting guidance where the current model supports it. Keep canonical English filter codes (`Individual`, `Casual`, `Standing`, and so on) unchanged; choose the category from the existing catalog where suitable. Set free/premium status deliberately rather than deriving it from a filename.
 3. Preserve the originals privately. Create efficient, visually reviewed bundled copies after approval, stripping unnecessary EXIF/GPS metadata. Maintain aspect ratio and retain important hands and feet in detail views. Choose compression and size from actual phone inspection, not a fixed file-size target alone.
 4. Add approved catalog entries and photo metadata in one reviewed change. Keep all existing IDs and data meanings. Bundled images are available offline and do not need photo-library permissions, uploads or account access. Bundled photos cannot be individually removed from the installed APK; do not label them as removable downloads.
@@ -83,7 +88,7 @@ The existing validation command is `python3 tools/validate_content.py`. It check
 
 ## Current pending items
 
-- Remaining photos 13–43 and confirmation that the complete set has been sent.
+- Another 26 photos, their series/number mapping and confirmation that the complete set has been sent.
 - Rights, redistribution terms, required credit and any use restrictions for this new batch.
 - Final number-to-guide mapping, original instructions and translation review.
 - Asset import, build/device checks and a rebuilt release containing the approved collection.
@@ -94,7 +99,10 @@ This document provides a batch workflow and proposed metadata. It does not claim
 
 Run `python3 tools/stage_photo_batch.py <attachment-directory> /workspace/hello-photography-photo-intake`
 to collect the next numbered batch. This helper verifies image files, records
-SHA-256/dimensions, preserves earlier slots and reports remaining numbers. It
+SHA-256/dimensions, distinguishes male/female/unnamed numbered series, preserves
+earlier file paths and IDs, and reports the remaining photo count. Its manifest
+records received numbers by series rather than an incorrect global missing range.
+Conflicting replacements, duplicate identities and pose-ID collisions require review. It
 copies originals without pixel edits and never publishes into app assets. It
 requires Pillow, also used by the existing store artwork tooling. Keep the
 intake directory outside Git. The app collection is imported only after its

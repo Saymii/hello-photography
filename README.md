@@ -6,8 +6,9 @@ The earlier distributed app used `com.posemaster.app`. The new Play identity and
 
 ## New photo collection in preparation
 
-The owner is preparing a new set of 48 photos (19 October 2026). Seventeen numbered
-01–12 and 44–48 have been received and staged outside Git. The app now supports optional
+The owner is preparing a new set of 48 photos (19 October 2026). Twenty-two have
+been received: male 01–12, female 01–05 and the earlier numbered 44–48. They are
+staged outside Git. The app now supports optional
 bundled photo references through Coil, full-frame display, credits and illustration
 fallbacks. Existing guide IDs and favorites retain their meaning. See
 [the collection workflow](docs/PHOTO_COLLECTION.md) for the remaining batch,
