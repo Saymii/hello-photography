@@ -1,7 +1,7 @@
 # Release and service setup
 
 The prepared Play application is **Hello Photography**, application ID
-**`com.saymii.hellophotography`**, version **1.0.0**, version code **3**. It targets
+**`com.saymii.hellophotography`**, version **1.0.1**, version code **4**. It targets
 and compiles against API **36**, with minimum API **26**, Build Tools **36.0.0**,
 Android Gradle Plugin **8.10.1**, Gradle **8.11.1**, and JDK **17 or 21**.
 Google Play acceptance and payment operation are separate from building an AAB.
@@ -44,7 +44,7 @@ previous test passes must not be applied to this changed release.
    configuration without printing its values; keep that JSON outside the checkout.
 4. The generated bundle is
    `app/build/outputs/bundle/release/app-release.aab`; the intended delivery copy is
-   `release/HelloPhotography-1.0.0.aab`. Confirm the final signature, certificate,
+   `release/HelloPhotography-1.0.1.aab`. Confirm the final signature, certificate,
    package, version, target API, release manifest and checksum. An AAB is uploaded
    to Play and cannot be opened on an Android phone as an APK.
 5. For local device testing, build `./gradlew assembleRelease` with the same
@@ -133,8 +133,13 @@ entitlement enforcement.
 
 The release is designed for guest access and local role selection, favorites,
 collections, recent history, learning progress, themes and optional reminders. It
-does not upload users' photos and uses no photos supplied in chat, including as
-inspiration. The bundled library uses labeled original illustrations. The premium
+does not upload users' photos. Alongside the original illustrated guides, the
+source now includes 39 owner-authorized AI-generated photo references from the
+new collection. Nine of the planned 48 photo files are still missing. Earlier
+excluded uploads and the RAR remain unused, including as inspiration. Original
+illustrations and AI-generated photo references are labeled separately. See
+[PHOTO_COLLECTION.md](PHOTO_COLLECTION.md) for provenance, counts and stable IDs.
+The premium
 architecture is visible as preparation, not an active subscription service.
 
 Review and publish the supplied policy/terms under the owner's real public HTTPS

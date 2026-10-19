@@ -10,17 +10,18 @@ the listing and App content declarations.
 | Play Console field | File | Prepared format |
 | --- | --- | --- |
 | App name | `store-listing/en-US/title.txt` | 17 characters; maximum 30 |
-| Short description | `store-listing/en-US/short-description.txt` | 80 characters; maximum 80 |
+| Short description | `store-listing/en-US/short-description.txt` | Maximum 80 characters |
 | Full description | `store-listing/en-US/full-description.txt` | Under 4,000 characters |
 | High-resolution icon | `store-listing/app-icon-512.png` | 512 × 512, 32-bit RGBA PNG; fully opaque |
 | Feature graphic | `store-listing/feature-graphic-1024x500.png` | 1024 × 500, opaque RGB PNG |
 | Phone screenshots | `store-listing/screenshots/phone/*.png` | Actual app renders; see below |
 
-All listing artwork is original geometric/vector artwork created for this project.
-No user-uploaded photos, third-party photographs, stock imagery, creator marks, or
-social-media screenshots were used. The square icon has no baked rounded-corner
-mask. Google Play applies the display shape. Editable SVG sources and an asset
-renderer are in `store-listing/source/`.
+The icon and feature graphic are original geometric/vector artwork created for
+this project, without uploaded photos, stock imagery, creator marks or social-media
+screenshots. The square icon has no baked rounded-corner mask. Google Play applies
+the display shape. Editable SVG sources and an asset renderer are in
+`store-listing/source/`. Phone screenshots must show the exact submitted build,
+including the source labels on its new AI-generated reference images.
 
 Reproduce the icon and feature graphic with Python 3 and Pillow:
 
@@ -71,11 +72,14 @@ adb shell rm /sdcard/hello-photography.png
 ```
 
 Google Play requires at least two phone screenshots. Upload the strongest actual
-screens first: personalized home, illustrated pose guide, Explore, then academy.
-Use the welcome and Profile captures if they clearly explain supported features.
-Keep the screenshots truthful; the pose library uses original illustrations,
-not photographic reference images. A development-mode purchase screen should not
-be advertised as a working subscription checkout.
+screens first: personalized home, a photo guide with its AI-generated source label,
+Explore, then academy. Use the welcome and Profile captures if they clearly explain
+supported features. Refresh the earlier illustration-only release captures before
+submitting the photo update. Do not imply that AI-generated references are real
+model photographs, that all 48 intended photos have arrived, or that the offline
+recommendation assistant uses an AI model. A development-mode purchase screen
+should not be advertised as a working subscription checkout. Confirm any required
+rights before using a reference separately in marketing.
 
 ## Create the listing in Play Console
 
@@ -100,8 +104,10 @@ be advertised as a working subscription checkout.
 
 ## Final copy review
 
-- The bundled guides are original illustrated sample content. Do not describe
-  them as licensed photographs or imply that a photo gallery exists.
+- The library includes 48 original illustrated guides plus 39 available
+  AI-generated photo guides. Nine of the planned 48 photos remain missing. Keep
+  counts consistent with the submitted artifact, identify AI-generated images and
+  do not describe them as real photographs of models or under an invented license.
 - The recommendation service is rule based and works offline. No cloud AI is
   claimed.
 - Free favorites have a limit of 20; existing local collections are preserved.

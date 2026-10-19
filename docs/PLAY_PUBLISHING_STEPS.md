@@ -6,7 +6,7 @@ This prepares a real Android release; it does not publish to Google Play or acti
 
 - Google Play app: **Hello Photography**.
 - New application ID: **`com.saymii.hellophotography`**.
-- Initial Play version: **`1.0.0`**, version code **`3`**.
+- Current prepared version: **`1.0.1`**, version code **`4`** (the earlier 1.0.0 bundle used code 3).
 - Publisher: **Simon Solomon**.
 - Public support/privacy email: **simonsolomon436@gmail.com**.
 - Android minimum: API 26 / Android 8.0.
@@ -153,7 +153,7 @@ Owner contact details have been supplied. A **public HTTPS privacy-policy URL is
 
 The policy must be publicly reachable without sign-in, a geographic restriction, or a file download/PDF. Check it in an incognito browser and on mobile. It must name Hello Photography and Simon Solomon, show the contact email, and match the actual release. Add the real URL in Play Console and in app configuration where supported; do not leave an example URL.
 
-Use the truthful store copy and art under `store-listing/`. The icon/screenshots must represent the actual application, including original illustrations rather than photographic examples. Do not use any photos uploaded in the conversation. Review final screenshot text, clipping, localization, and whether screenshots show unavailable features. Do not advertise live subscriptions, cloud sync, AI, or real photographs while those capabilities are not available.
+Use the truthful store copy and art under `store-listing/`. Screenshots must represent the exact submitted application. The original icon/feature artwork remains usable; the seven screenshots under `store-listing/screenshots/phone/` were refreshed from the current Activity rendering. Recapture from the exact Play-delivered release before production submission. The new photo collection contains owner-supplied AI-generated references, labeled with their source; earlier excluded uploads and the RAR remain prohibited. Do not claim the full 48-photo collection is present while only 39 sources are available. Review screenshot text, clipping, localization and unavailable features. Do not advertise live subscriptions, cloud sync or a configured AI recommendation service while they are unavailable. Review any required rights before using a bundled reference separately in marketing.
 
 ## 8. Create the app in Play Console
 
@@ -175,7 +175,7 @@ Use the truthful store copy and art under `store-listing/`. The icon/screenshots
 
 ## 10. Prepare subscriptions without pretending they work
 
-The current release provides all 48 sample posing guides free, including four premium-labeled collection previews, plus free beginner lessons. Advanced Academy courses expose syllabus previews, while premium lessons remain locked. **Purchases are disabled.** Do not take payment, grant premium through a local flag, or advertise live subscriptions until the following work is complete and tested.
+The current release provides 39 AI photo guides and all 48 original sample posing guides free, including four premium-labeled collection previews, plus free beginner lessons. Advanced Academy courses expose syllabus previews, while premium lessons remain locked. **Purchases are disabled.** Do not take payment, grant premium through a local flag, or advertise live subscriptions until the following work is complete and tested.
 
 1. Set up the developer merchant/payment profile as required by Play. Under monetization, create monthly and annual subscription products with active base plans, billing periods, regional prices, applicable taxes, and truthful benefit descriptions. Match the client configuration: `HELLO_MONTHLY_PRODUCT` and `HELLO_ANNUAL_PRODUCT` are Gradle properties for two subscription **product IDs**, not secrets. A single product with two base plans requires corresponding client changes; do not interchange a base-plan ID and product ID.
 2. Configure real product IDs using private/local Gradle properties or CI properties. Prices must come from Google Play ProductDetails/selected offers. The app must show actual price, period, automatic renewal, any trial/intro terms, cancellation information, and policy links before purchase.

@@ -33,13 +33,13 @@ val HelloGold=Color(0xFFD9BD86)
 }
 @Composable fun HpPoseCard(pose:Pose,language:String,featured:Boolean=false,onOpen:(Int)->Unit) {
  Card(onClick={onOpen(pose.id)},shape=RoundedCornerShape(22.dp),modifier=Modifier.fillMaxWidth()) {
-  if(featured) PoseReferenceImage(pose,Modifier.fillMaxWidth().height(260.dp),language=language)
+  if(featured || pose.photo!=null) PoseReferenceImage(pose,Modifier.fillMaxWidth().height(if(featured)260.dp else 300.dp),language=language)
   Row(Modifier.padding(16.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(14.dp)) {
-   if(!featured) PoseReferenceImage(pose,Modifier.size(88.dp),showLabel=false,language=language)
+   if(!featured && pose.photo==null) PoseReferenceImage(pose,Modifier.size(88.dp),showLabel=false,language=language)
    Column(Modifier.weight(1f),verticalArrangement=Arrangement.spacedBy(4.dp)) {
     Text(categoryLabel(pose.category,language),style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.primary)
     Text(pose.name,fontFamily=FontFamily.Serif,fontSize=21.sp)
-    Text(if(pose.premium)tr(language,"Premium collection preview","የፕሪሚየም ስብስብ ቅድመ እይታ") else tr(language,"Free original guide","ነፃ የተዘጋጀ መመሪያ"),style=MaterialTheme.typography.labelSmall)
+    Text(if(pose.premium)tr(language,"Premium collection preview","የፕሪሚየም ስብስብ ቅድመ እይታ") else if(pose.photo!=null)tr(language,"Free photo guide · offline","ነፃ የፎቶ መመሪያ፤ ከመስመር ውጭ") else tr(language,"Free original guide","ነፃ የተዘጋጀ መመሪያ"),style=MaterialTheme.typography.labelSmall)
    }
    Icon(Icons.AutoMirrored.Outlined.ArrowForward,contentDescription=tr(language,"Open ${pose.name}","${pose.name} ክፈት"))
   }

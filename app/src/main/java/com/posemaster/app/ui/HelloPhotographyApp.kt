@@ -89,14 +89,14 @@ import com.posemaster.app.domain.*
      val current=vm.poses.find{it.id==selectedId}
      when {
       showPremium->SubscriptionScreen(language,{showPremium=false},{showPremium=false;tab=4},pane)
-      current!=null->PoseDetailScreen(localize(current),language,saved.find{it.poseId==current.id},
+      current!=null->PoseDetailScreen(localize(current),vm.poses.filter{it.photo!=null}.map(localize),language,saved.find{it.poseId==current.id},
        savedLoading=loading,onBack={selectedId=null},onSave={name,download->vm.save(current.id,name,download)},onRemove={vm.remove(current.id)},
        onShare={shareText(context, "Hello Photography · ${localize(current).name}\n${localize(current).steps}\n${localize(current).hands}\n${localize(current).feet}")},
        onPrevious={openPose(vm.poses[(vm.poses.indexOf(current)-1+vm.poses.size)%vm.poses.size].id)},
        onNext={openPose(vm.poses[(vm.poses.indexOf(current)+1)%vm.poses.size].id)},modifier=pane)
       showAssistant->AssistantScreen(vm.poses,language,localize,openPose,{showAssistant=false},pane)
       tab==0->HomeScreen(vm.poses,saved.map{it.poseId},settings,progress.completed.size,progress.lastLesson!=null,language,localize,query,{query=it;tab=1},openPose,
-       onCategory={category=it;tab=1},onExplore={category="All";query="";tab=1},onAssistant={showAssistant=true},onLearn={tab=2},onFavorites={tab=3},onPremium={showPremium=true},modifier=pane)
+       onCategory={category=it;query="";finder=Finder();tab=1},onExplore={category="All";query="";finder=Finder();tab=1},onAssistant={showAssistant=true},onLearn={tab=2},onFavorites={tab=3},onPremium={showPremium=true},modifier=pane)
       tab==1->ExploreScreen(vm.poses,language,query,{query=it},category,{category=it},finder,{finder=it},localize,openPose,{showAssistant=true},pane)
       tab==2->LearnScreen(modifier=pane,language=language,onPremium={showPremium=true})
       tab==3->FavoritesScreen(vm.poses,saved,loading,language,localize,openPose,pane)
@@ -128,20 +128,36 @@ import com.posemaster.app.domain.*
  }
 }
 
+private val photoCategories=listOf("Male poses","Female poses","Couple photography","Group photography","Casual & selfie poses")
+
 private fun roleCategories(role:String?)=when(role){
  "photographer"->listOf("Portrait photography","Wedding photography","Studio photography","Professional business portraits","Couple photography")
  "model"->listOf("Fashion photography","Standing poses","Sitting poses","Walking poses","Female poses","Male poses")
- else->listOf("Selfie poses","Birthday photography","Graduation photography","Outdoor photography","Group photography","Instagram and TikTok poses")
+ else->listOf("Casual & selfie poses","Selfie poses","Birthday photography","Graduation photography","Outdoor photography","Group photography","Instagram and TikTok poses")
 }
 @Composable private fun HomeScreen(poses:List<Pose>,favoriteIds:List<Int>,settings:UserSettings,completed:Int,hasResume:Boolean,language:String,localize:(Pose)->Pose,query:String,onQuery:(String)->Unit,onOpen:(Int)->Unit,onCategory:(String)->Unit,onExplore:()->Unit,onAssistant:()->Unit,onLearn:()->Unit,onFavorites:()->Unit,onPremium:()->Unit,modifier:Modifier) {
- val recommendations=poses.filter{it.category in roleCategories(settings.role)}
- val featured=(recommendations.ifEmpty{poses})[(java.time.LocalDate.now().dayOfYear-1)%(recommendations.ifEmpty{poses}).size]
+ val photos=poses.filter{it.photo!=null}
+ val recommendations=poses.filter{it.category in roleCategories(settings.role)}.sortedBy{it.photo==null}
+ val featuredOptions=recommendations.filter{it.photo!=null}.ifEmpty{photos}.ifEmpty{recommendations}.ifEmpty{poses}
+ val featured=featuredOptions[(java.time.LocalDate.now().dayOfYear-1)%featuredOptions.size]
  LazyColumn(modifier.testTag("home_list"),contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(18.dp)) {
   item {Row(Modifier.fillMaxWidth(),horizontalArrangement=Arrangement.SpaceBetween,verticalAlignment=Alignment.CenterVertically){Text("HELLO\nPHOTOGRAPHY",fontWeight=FontWeight.Bold,letterSpacing=2.sp);AssistChip(onClick=onPremium,label={Text(tr(language,"✦ Premium","✦ ፕሪሚየም"))})}}
   item {Text(tr(language,when(settings.role){"photographer"->"WELCOME, PHOTOGRAPHER";"model"->"YOUR NEXT GREAT FRAME";else->"MAKE A MOMENT YOURS"},when(settings.role){"photographer"->"ፎቶግራፈር፣ እንኳን ደህና መጡ";"model"->"ቀጣዩ ምርጥ ፎቶዎ";else->"ጊዜውን የራስዎ ያድርጉ"}),style=MaterialTheme.typography.labelSmall,color=MaterialTheme.colorScheme.primary);HpHeading(tr(language,when(settings.role){"photographer"->"See the light.\nTell the story.";"model"->"Find your angle.\nOwn the frame.";else->"A little direction.\nA beautiful memory."},when(settings.role){"photographer"->"ብርሃኑን ይመልከቱ።\nታሪኩን ይንገሩ።";"model"->"አንግልዎን ያግኙ።\nበፎቶ ይተማመኑ።";else->"ትንሽ መመሪያ።\nውብ ትዝታ።"}),Modifier.padding(top=10.dp))}
   item {SearchBox(language,query,onQuery)}
   item {Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){Button(onClick=onExplore,modifier=Modifier.weight(1f)){Text(tr(language,"Explore poses","አቋሞችን ያስሱ"))};OutlinedButton(onClick=onLearn,modifier=Modifier.weight(1f)){Text(tr(language,"Start learning","መማር ይጀምሩ"))}}}
   item {HpSection(tr(language,"Today's featured pose","የዛሬ ልዩ አቋም"),tr(language,"A daily edit for your interests","ለፍላጎትዎ የተመረጠ የዕለቱ ሃሳብ"));Spacer(Modifier.height(12.dp));HpPoseCard(localize(featured),language,true,onOpen)}
+  if(photos.isNotEmpty()) {
+   item {HpSection(tr(language,"AI pose photo library","በAI የተፈጠሩ የአቋም ፎቶዎች"),tr(language,"Practice with clear visual references, available offline.","ከመስመር ውጭ በሚገኙ ግልጽ ማጣቀሻዎች ይለማመዱ።"))}
+   items(photoCategories,key={"photo_category_$it"}){c->
+    val categoryPhotos=photos.filter{it.category==c}
+    if(categoryPhotos.isNotEmpty()) Card(onClick={onCategory(c)},shape=RoundedCornerShape(20.dp),modifier=Modifier.fillMaxWidth().testTag("photo_category_${photoCategories.indexOf(c)}")) {
+     Row(Modifier.padding(12.dp),verticalAlignment=Alignment.CenterVertically,horizontalArrangement=Arrangement.spacedBy(14.dp)) {
+      PoseReferenceImage(localize(categoryPhotos.first()),Modifier.width(84.dp).height(112.dp),showLabel=false,language=language)
+      Column(Modifier.weight(1f)){Text(categoryLabel(c,language),style=MaterialTheme.typography.titleMedium);Text(tr(language,"${categoryPhotos.size} photo guides · Open collection →","${categoryPhotos.size} የፎቶ መመሪያዎች፤ ስብስቡን ክፈት →"),style=MaterialTheme.typography.bodySmall,modifier=Modifier.padding(top=6.dp))}
+     }
+    }
+   }
+  }
   item {HpNotice(tr(language,"AI Pose Assistant","የAI አቋም ረዳት"),tr(language,"Tell us the occasion, outfit, and location. Get useful offline recommendations using transparent rules.","ዝግጅቱን፣ ልብሱን እና ቦታውን ይንገሩን። በግልጽ መመሪያዎች ላይ የተመሠረቱ ከመስመር ውጭ ምክሮችን ያግኙ።"));TextButton(onClick=onAssistant){Text(tr(language,"Find my pose →","የእኔን አቋም ፈልግ →"))}}
   item {HpSection(tr(language,"Popular categories","ተወዳጅ ምድቦች"));Row(Modifier.horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(8.dp)){roleCategories(settings.role).forEach{c->SuggestionChip(onClick={onCategory(c)},label={Text(categoryLabel(c,language))})}}}
   item {HpSection(tr(language,"Trending posing ideas","የተመረጡ የአቋም ሃሳቦች"),tr(language,"Editor's picks · curated, not live popularity rankings","የአዘጋጁ ምርጫዎች፤ በቀጥታ የሕዝብ ድምፅ ውጤት አይደሉም"))}
@@ -160,11 +176,13 @@ private fun roleCategories(role:String?)=when(role){
 @Composable private fun SearchBox(language:String,query:String,onQuery:(String)->Unit) {OutlinedTextField(query,onQuery,placeholder={Text(tr(language,"Search poses, moods, and moments","አቋሞችን እና ሃሳቦችን ይፈልጉ"))},leadingIcon={Icon(Icons.Outlined.Search,null)},singleLine=true,modifier=Modifier.fillMaxWidth().testTag("pose_search"),shape=RoundedCornerShape(18.dp))}
 @Composable private fun ExploreScreen(poses:List<Pose>,language:String,query:String,onQuery:(String)->Unit,category:String,onCategory:(String)->Unit,finder:Finder,onFinder:(Finder)->Unit,localize:(Pose)->Pose,onOpen:(Int)->Unit,onAssistant:()->Unit,modifier:Modifier) {
  var filters by rememberSaveable {mutableStateOf(false)}
- val matching=PoseFilter.apply(poses,"",category,finder).filter{query.isBlank() || "${localize(it).name} ${localize(it).steps} ${categoryLabel(it.category,language)} ${it.name} ${it.category}".contains(query,true)}
+ var photosOnly by rememberSaveable {mutableStateOf(false)}
+ val matching=PoseFilter.apply(poses,"",category,finder).filter{(!photosOnly || it.photo!=null) && (query.isBlank() || "${localize(it).name} ${localize(it).steps} ${categoryLabel(it.category,language)} ${it.name} ${it.category}".contains(query,true))}.sortedBy{it.photo==null}
  LazyColumn(modifier.testTag("explore_list"),contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
   item {HpHeading(tr(language,"Find your next\nfavorite pose.","ቀጣዩን ተወዳጅ\nአቋምዎን ያግኙ።"));Text(tr(language,"Every occasion. Every body. Your perspective.","ለማንኛውም ዝግጅት። ለሁሉም ሰው። የራስዎ እይታ።"),Modifier.padding(top=8.dp))}
   item {SearchBox(language,query,onQuery)}
-  item {Row(Modifier.horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(8.dp)){(listOf("All")+poses.map{it.category}.distinct()).forEach{c->FilterChip(selected=category==c,onClick={onCategory(c)},label={Text(if(c=="All")tr(language,"All","ሁሉም") else categoryLabel(c,language))})}}}
+  if(poses.any{it.photo!=null}) item {FilterChip(selected=photosOnly,onClick={photosOnly=!photosOnly},label={Text(tr(language,"AI photo guides only","በAI የተፈጠሩ የፎቶ መመሪያዎች ብቻ"))},modifier=Modifier.testTag("photo_guides_filter"))}
+  item {Row(Modifier.horizontalScroll(rememberScrollState()),horizontalArrangement=Arrangement.spacedBy(8.dp)){(listOf("All")+photoCategories.filter{c->poses.any{it.photo!=null && it.category==c}}+poses.map{it.category}.distinct()).distinct().forEach{c->FilterChip(selected=category==c,onClick={onCategory(c)},label={Text(if(c=="All")tr(language,"All","ሁሉም") else categoryLabel(c,language))})}}}
   item {Row(horizontalArrangement=Arrangement.spacedBy(8.dp)){OutlinedButton(onClick={filters=!filters},modifier=Modifier.weight(1f)){Icon(Icons.Outlined.Tune,null);Text(tr(language," Filters"," ማጣሪያዎች"))};OutlinedButton(onClick=onAssistant,modifier=Modifier.weight(1f)){Text(tr(language,"Pose assistant","አቋም ረዳት"))}}
    if(filters){
     HpChoice(tr(language,"Subject","ተነሺ"),finder.subject,listOf("Any","Individual","Couple","Family","Group"),{onFinder(finder.copy(subject=it))})
@@ -173,7 +191,7 @@ private fun roleCategories(role:String?)=when(role){
     HpChoice(tr(language,"Position","አቋም"),finder.position,listOf("Any","Standing","Sitting","Walking","Close-up"),{onFinder(finder.copy(position=it))})
     HpChoice(tr(language,"Experience","ልምድ"),finder.experience,listOf("Any","Beginner","Intermediate","Professional"),{onFinder(finder.copy(experience=it))})
    }
-   if(query.isNotBlank() || category!="All" || finder!=Finder()) TextButton(onClick={onQuery("");onCategory("All");onFinder(Finder())}){Text(tr(language,"Reset search and filters","ፍለጋውን እና ማጣሪያዎችን አጽዳ"))}
+   if(query.isNotBlank() || category!="All" || finder!=Finder() || photosOnly) TextButton(onClick={onQuery("");onCategory("All");onFinder(Finder());photosOnly=false}){Text(tr(language,"Reset search and filters","ፍለጋውን እና ማጣሪያዎችን አጽዳ"))}
   }
   item {Text(tr(language,"${matching.size} guides to explore","ለማሰስ ${matching.size} መመሪያዎች"),style=MaterialTheme.typography.labelLarge)}
   if(matching.isEmpty()) item {HpNotice(tr(language,"No matches yet","የሚስማማ ውጤት የለም"),tr(language,"Try fewer filters or a shorter search. The offline sample library does not cover every combination.","ጥቂት ማጣሪያዎችን ወይም አጭር ፍለጋ ይሞክሩ። ከመስመር ውጭ ያለው ስብስብ ሁሉንም ጥምረት አይሸፍንም።"))}
@@ -181,14 +199,17 @@ private fun roleCategories(role:String?)=when(role){
  }
 }
 
-@Composable private fun PoseDetailScreen(pose:Pose,language:String,entry:SavedPose?,savedLoading:Boolean,onBack:()->Unit,onSave:(String,Boolean)->Unit,onRemove:()->Unit,onShare:()->Unit,onPrevious:()->Unit,onNext:()->Unit,modifier:Modifier) {
+@Composable private fun PoseDetailScreen(pose:Pose,photoPoses:List<Pose>,language:String,entry:SavedPose?,savedLoading:Boolean,onBack:()->Unit,onSave:(String,Boolean)->Unit,onRemove:()->Unit,onShare:()->Unit,onPrevious:()->Unit,onNext:()->Unit,modifier:Modifier) {
+ var showPhotoViewer by rememberSaveable(pose.id){mutableStateOf(false)}
+ if(showPhotoViewer && pose.photo!=null) PosePhotoViewer(photoPoses,pose.id,language,onDismiss={showPhotoViewer=false})
  var collection by rememberSaveable(pose.id){mutableStateOf(entry?.collection ?: "My favorites")}
  var collectionEdited by rememberSaveable(pose.id){mutableStateOf(false)}
  LaunchedEffect(pose.id,entry?.collection){if(!collectionEdited && entry!=null) collection=entry.collection}
  LazyColumn(modifier.testTag("pose_detail"),contentPadding=PaddingValues(20.dp),verticalArrangement=Arrangement.spacedBy(16.dp)) {
   item {TextButton(onClick=onBack){Text(tr(language,"← Back to collection","← ወደ ስብስቡ ተመለስ"))}}
   item {
-   PoseReferenceImage(pose,Modifier.fillMaxWidth().height(if(pose.photo==null)320.dp else 420.dp),language=language)
+   PoseReferenceImage(pose,Modifier.fillMaxWidth().height(if(pose.photo==null)320.dp else 420.dp).then(if(pose.photo!=null)Modifier.clickable(onClickLabel=tr(language,"View full-screen photo","ሙሉ ማያ ፎቶን ተመልከት")){showPhotoViewer=true} else Modifier),language=language)
+   if(pose.photo!=null) OutlinedButton(onClick={showPhotoViewer=true},modifier=Modifier.fillMaxWidth().testTag("open_photo_viewer")){Icon(Icons.Outlined.Fullscreen,null);Text(tr(language," View full-screen photo"," ሙሉ ማያ ፎቶን ተመልከት"))}
    Text(if(pose.photo==null) tr(language,"Original reference illustration · no external photograph","የመጀመሪያ ማብራሪያ ሥዕል፤ ከውጭ የተገኘ ፎቶ አይደለም")
     else tr(language,"Photo credit: ${pose.photo.credit}","የፎቶ ባለቤት፦ ${pose.photo.credit}"),style=MaterialTheme.typography.labelSmall)
    pose.photo?.let {Text(tr(language,"Image rights: ${it.license}","የፎቶ መብት፦ ${it.license}"),style=MaterialTheme.typography.labelSmall)}

@@ -10,7 +10,7 @@ from PIL import Image
 
 
 def series_for(filename: str) -> str:
-    match = re.search(r"(?:^|[-_ ])(male|female|couple)_pose_\d+\.", filename, re.IGNORECASE)
+    match = re.search(r"(?:^|[-_ ])(male|female|couple|group|casual|selfie)_pose_\d+\.", filename, re.IGNORECASE)
     return match[1].lower() if match else "numbered"
 
 
@@ -58,7 +58,7 @@ def stage(source: Path, target: Path) -> dict:
             if width < 640 or height < 640:
                 raise ValueError(f"Photo is too small for a reference guide: {path.name}")
         previous = existing.get(key)
-        offset = {"female": 2000, "couple": 3000}.get(series, 1000)
+        offset = {"female": 2000, "couple": 3000, "group": 4000, "casual": 5000, "selfie": 5000}.get(series, 1000)
         pose_id = previous["poseId"] if previous else offset + number
         if pose_id in pose_ids and pose_ids[pose_id] != key:
             raise ValueError(f"Photo {key} would reuse an existing pose ID; review the mapping first")

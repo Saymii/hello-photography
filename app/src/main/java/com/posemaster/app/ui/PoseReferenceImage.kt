@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -12,6 +13,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.IntSize
 import coil.ImageLoader
 import coil.imageLoader
 import coil.compose.SubcomposeAsyncImage
@@ -20,7 +22,7 @@ import com.posemaster.app.domain.Pose
 
 /** Bundled reference photos need no network, account, or photo-library permission. */
 @Composable
-fun PoseReferenceImage(pose: Pose, modifier: Modifier = Modifier, showLabel: Boolean = true, language: String = "en", imageLoader: ImageLoader? = null) {
+fun PoseReferenceImage(pose: Pose, modifier: Modifier = Modifier, showLabel: Boolean = true, language: String = "en", imageLoader: ImageLoader? = null, onImageSize: ((IntSize) -> Unit)? = null) {
     val photo = pose.photo
     if (photo == null) {
         OriginalPoseArt(pose, modifier, showLabel)
@@ -41,7 +43,7 @@ fun PoseReferenceImage(pose: Pose, modifier: Modifier = Modifier, showLabel: Boo
         error = {
             Box(Modifier.fillMaxSize()) {
                 OriginalPoseArt(pose, Modifier.fillMaxSize(), showLabel = false)
-                if (showLabel) ReferenceBadge(tr(language,
+                ReferenceBadge(tr(language,
                     "Photo unavailable · illustration shown",
                     "ፎቶው አልተገኘም፤ ምሳሌ ይታያል"
                 ), Modifier.align(Alignment.BottomStart))
@@ -49,9 +51,15 @@ fun PoseReferenceImage(pose: Pose, modifier: Modifier = Modifier, showLabel: Boo
         },
         success = {
             val imageScope = this
+            val size = painter.intrinsicSize
+            if (size.width.isFinite() && size.height.isFinite() && size.width > 0 && size.height > 0) {
+                SideEffect { onImageSize?.invoke(IntSize(size.width.toInt(), size.height.toInt())) }
+            }
             Box(Modifier.fillMaxSize()) {
                 imageScope.SubcomposeAsyncImageContent(Modifier.fillMaxSize(), contentDescription = photo.altText, contentScale = ContentScale.Fit)
-                if (showLabel) ReferenceBadge(tr(language, "Reference photo", "ማጣቀሻ ፎቶ"), Modifier.align(Alignment.BottomStart))
+                if (showLabel) ReferenceBadge(if (photo.source.contains("AI-generated", ignoreCase = true))
+                    tr(language, "AI-generated reference", "በAI የተፈጠረ ማጣቀሻ")
+                    else tr(language, "Reference photo", "ማጣቀሻ ፎቶ"), Modifier.align(Alignment.BottomStart))
             }
         }
     )

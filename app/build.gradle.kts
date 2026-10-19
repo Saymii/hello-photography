@@ -13,7 +13,7 @@ android {
  namespace = "com.posemaster.app"
  compileSdk = 36
  buildToolsVersion = "36.0.0"
- defaultConfig { applicationId = "com.saymii.hellophotography"; minSdk = 26; targetSdk = 36; versionCode = 3; versionName = "1.0.0"
+ defaultConfig { applicationId = "com.saymii.hellophotography"; minSdk = 26; targetSdk = 36; versionCode = 4; versionName = "1.0.1"
   buildConfigField("String", "PLAY_MONTHLY_PRODUCT", "\"${providers.gradleProperty("HELLO_MONTHLY_PRODUCT").orElse("").get()}\"")
   buildConfigField("String", "PLAY_ANNUAL_PRODUCT", "\"${providers.gradleProperty("HELLO_ANNUAL_PRODUCT").orElse("").get()}\"")
  }

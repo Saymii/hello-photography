@@ -1,122 +1,76 @@
-# Adding the new 48-photo collection
+# AI-generated pose photo collection
 
-The owner plans to provide a new set of 48 pose photographs for Hello Photography. Thirty-five files have arrived: male 01–12, female 01–10, couple 01–08 and the earlier numbered 44–48. This is a new batch: photographs uploaded earlier in the conversation, including the earlier RAR archive, remain excluded from the app and from visual inspiration.
+The owner identified the new collection as AI-generated and requested its inclusion in Hello Photography on 19 October 2026. The intended set is **48 photos**: 12 male, 12 female, 8 couple, 8 group and 8 casual/selfie poses. **39 source files are currently available**. The app must not claim that all 48 have been imported or verified.
 
-The current app continues to use its 48 original written guides and Compose illustrations. Receipt of a file does not make it part of a release. The new photos need a complete number-to-pose manifest, redistribution permission and reviewed instructions before they are bundled. Keep pending uploads outside the Git repository and release archives.
+| Category | Available | Planned | Outstanding |
+| --- | ---: | ---: | --- |
+| Male | 12 | 12 | None |
+| Female | 10 | 12 | Female poses 11–12 |
+| Couple | 8 | 8 | None |
+| Group | 1 | 8 | Seven additional group photos |
+| Casual/selfie | 8 | 8 | None |
+| **Total** | **39** | **48** | **9 photos** |
 
-## Sending the rest of the batch
+The one supplied group image uses the owner's global number 40. Casual/selfie images use global numbers 41–48. Do not infer the filenames or numbering of the seven missing group images, duplicate a supplied photo to fill a gap, or substitute unrelated older uploads. The earlier unapproved image batches and RAR archive remain excluded, including as visual inspiration.
 
-Keep the existing series names and numbers and send the remaining files in any order. A single ZIP with named images is convenient; several smaller batches also work. Male, female and couple filenames have separate numbering: `male_pose_01.jpg`, `female_pose_01.jpg` and `couple_pose_01.jpg` are different photos. Keep filenames descriptive and do not renumber files after an upload. Keep the highest-quality originals separately. The total collection is planned to contain 48 photos; counts per series have not been specified.
+## What is bundled
 
-Received filenames establish this proposed mapping, not a replacement for existing guides:
+The available collection is recorded in `app/src/main/assets/photo-poses.json`, with mobile WebP copies under `app/src/main/assets/photos/owner-photo-set-2026-10/`. Each photo guide has a title, simple body-positioning instructions, hand/foot/face guidance, a category and filter values, accessible image text and visible source/authorization metadata. The photos are bundled, so reading them does not require a connection, camera access, photo-library access or an account.
 
-| Series | Photo number | Proposed stable pose ID | Supplied title |
-| --- | --- | --- | --- |
-| Male | 01 | 1001 | male_pose_01.jpg |
-| Male | 02 | 1002 | male_pose_02.jpg |
-| Male | 03 | 1003 | male_pose_03.jpg |
-| Male | 04 | 1004 | male_pose_04.jpg |
-| Male | 05 | 1005 | male_pose_05.jpg |
-| Male | 06 | 1006 | male_pose_06.jpg |
-| Male | 07 | 1007 | male_pose_07.jpg |
-| Male | 08 | 1008 | male_pose_08.jpg |
-| Male | 09 | 1009 | male_pose_09.jpg |
-| Male | 10 | 1010 | male_pose_10.jpg |
-| Male | 11 | 1011 | male_pose_11.jpg |
-| Male | 12 | 1012 | male_pose_12.jpg |
-| Female | 01 | 2001 | female_pose_01.jpg |
-| Female | 02 | 2002 | female_pose_02.jpg |
-| Female | 03 | 2003 | female_pose_03.jpg |
-| Female | 04 | 2004 | female_pose_04.jpg |
-| Female | 05 | 2005 | female_pose_05.jpg |
-| Female | 06 | 2006 | female_pose_06.jpg |
-| Female | 07 | 2007 | female_pose_07.jpg |
-| Female | 08 | 2008 | female_pose_08.jpg |
-| Female | 09 | 2009 | female_pose_09.jpg |
-| Female | 10 | 2010 | female_pose_10.jpg |
-| Couple | 01 | 3001 | couple_pose_01.jpg |
-| Couple | 02 | 3002 | couple_pose_02.jpg |
-| Couple | 03 | 3003 | couple_pose_03.jpg |
-| Couple | 04 | 3004 | couple_pose_04.jpg |
-| Couple | 05 | 3005 | couple_pose_05.jpg |
-| Couple | 06 | 3006 | couple_pose_06.jpg |
-| Couple | 07 | 3007 | couple_pose_07.jpg |
-| Couple | 08 | 3008 | couple_pose_08.jpg |
-| Numbered | 44 | 1044 | Relaxed Railing Lookout |
-| Numbered | 45 | 1045 | Looking up from a book |
-| Numbered | 46 | 1046 | Casual tote bag walk, sideways glance |
-| Numbered | 47 | 1047 | Relaxed chair pose, chin in hand |
-| Numbered | 48 | 1048 | Relaxed three-quarter wave portrait |
+The original 48 written guides and their Compose illustrations remain available. Their stable IDs preserve existing favorites and recently viewed guides. New photo guides use their own IDs because a similarly numbered file does not necessarily show the same movement as an existing illustrated guide. Cards and details for the new guides use the corresponding photo. The full-screen viewer preserves the image's aspect ratio and supports closer inspection. A failed image load falls back to a clearly labeled illustration rather than leaving a blank card.
 
-Another 13 photos are needed to reach 48. Their exact series and filenames are pending; the old global missing-number range no longer applies. Additional delivery of the same series and number should be treated as an explicit revision, not a second pose. Compare file hashes to catch duplicates and keep a record of which revision was approved.
+This document describes the source content and import workflow. Check [VALIDATION.md](VALIDATION.md) and the release notes for the exact artifacts and checks completed; changing source files does not update an already installed APK.
 
-## Identity and existing saved data
+## Identity and saved data
 
-Existing pose IDs 1–48 identify specific original guides. Favorites, recently viewed guides and deep links rely on those IDs. Do not attach a new numbered photo to an existing guide merely because its filename ends with the same number: the movements and meaning can differ.
+| Photo series | Stable guide IDs | Mapping |
+| --- | --- | --- |
+| Male 01–12 | 1001–1012 | `1000 + male number` |
+| Female 01–10 | 2001–2010 | `2000 + female number` |
+| Couple 01–08 | 3001–3008 | `3000 + couple number` |
+| Group, global 40 | 1040 | Existing intake identity retained |
+| Casual/selfie, global 41–48 | 1041–1048 | Existing intake identity retained |
 
-Male files retain their proposed IDs **1001–1012**. Female files use **2001–2010**, calculated as `2000 + female photo number`. Couple files use **3001–3008**, calculated as `3000 + couple photo number`. Each series keeps its own identity without overwriting another guide with the same filename number. The earlier numbered 44–48 retain IDs **1044–1048**. Use collection ID `owner-photo-set-2026-10`. Assign further IDs without collisions and keep each identity fixed after publication. A revised photo can update the same guide only if it demonstrates the same pose; a different pose receives a new unused ID. A collection ID describes the editorial photo set and is separate from a user's named favorites collection in Room.
+Female 11–12 can use 2011–2012 after delivery and review. Assign the remaining group files unused IDs after checking their actual filenames and inventory; do not collide with the published IDs above. Keep each identity fixed after publication. A revised photo can replace the image for an existing guide when it demonstrates the same pose; a different movement needs a new ID. Collection ID `owner-photo-set-2026-10` identifies the editorial photo set and is separate from a user's favorites collection in Room.
 
-If a new image truly matches an existing guide, a reviewed decision can attach it to that existing ID without changing the guide's meaning. Do not do that automatically. Retain the existing guides and favorites while the new collection is prepared.
+## Originals, mobile copies and provenance
 
-## Proposed optional photo metadata
+Keep the full-quality uploaded originals in `/workspace/hello-photography-photo-intake`, outside Git and release archives. The intake manifest records each original filename, series/number, dimensions, byte size and SHA-256. Treat these originals as read-only. Mobile optimization creates separate WebP copies with Pillow (quality 84, method 6), a maximum edge of 1,280 pixels, no upscaling and metadata stripped from the derived files. It preserves aspect ratio and important hands, feet and props. Do not overwrite the originals or use optimized files as the only archive. The 39 originals total 2,478,888 bytes; the 39 bundled WebP copies total 1,892,984 bytes, a 23.6% reduction.
 
-Append a nullable, defaulted photo reference to `Pose` so existing constructor calls, original guides and translated copies remain compatible. One possible JSON record is:
+`docs/photo-assets.json` is the public provenance and integrity manifest for bundled copies. It records the intended and available counts and connects source hashes to optimized assets. Check this manifest when adding revisions or reconciling duplicate filenames. A hash establishes file identity; it does not establish copyright, a model release or the accuracy of an AI-generated depiction.
+
+The public attribution is **“AI-generated image supplied by Simon Solomon.”** The authorization record describes the owner's request to include this AI-generated collection in the app on **2026-10-19**. This is not a Creative Commons license or a claim that the developer independently verified the generating service's terms, subject releases or third-party rights. Keep any applicable generation-service usage terms, provenance evidence and permission records privately. Do not infer permission to redistribute an image separately from the app or to use it in marketing from the bundled reference metadata alone.
+
+AI-generated reference images can contain anatomical or object errors. Review hands, limbs, contact points and props; write instructions that are comfortable and physically achievable. The image is an educational reference, not proof of a real photograph or a real person's endorsement. The offline pose recommendation assistant continues to use structured rules; the source of these images does not make that assistant a configured AI service.
+
+## Catalog schema
+
+`PoseCatalog` loads `poses.json`, then appends `photo-poses.json`. The nullable `photo` field keeps illustrated guides compatible. Example:
 
 ```json
 {
   "photo": {
     "assetPath": "photos/owner-photo-set-2026-10/1048.webp",
-    "altText": "Standing subject with a relaxed hand raised in a wave.",
+    "altText": "Standing subject with one relaxed hand raised in a wave.",
     "collectionId": "owner-photo-set-2026-10",
-    "source": "Owner-supplied batch, file 48",
-    "credit": "Exact approved public credit",
-    "license": "Exact confirmed redistribution terms"
+    "source": "AI-generated reference supplied by the app owner",
+    "credit": "AI-generated image supplied by Simon Solomon",
+    "license": "Owner authorized inclusion in Hello Photography on 2026-10-19; AI-generated reference."
   }
 }
 ```
 
-This record illustrates the optional schema; it does not state that these files have a confirmed license or have been imported. Keep `photo` absent for illustrated guides. `assetPath` is relative to `app/src/main/assets/` and must point to an existing bundled JPG, PNG or WebP under `photos/`, with no remote URLs or path traversal. Every reference requires nonblank `altText`, `source`, `credit`, `license` and `collectionId`. Use Coil's bundled-asset loader and accessible descriptions. If an asset cannot load, show the original illustration and a clear fallback label rather than a blank card.
+Use the actual public metadata from the imported catalog when editing an existing entry. Every reference requires nonblank `altText`, `source`, `credit`, `license` and `collectionId`. Asset paths are relative to `app/src/main/assets/`, must resolve to a bundled image under `photos/`, and must not contain remote URLs or path traversal. Keep `photo` absent for illustrated guides. `license` records the supplied authorization without inventing a broader license.
 
-`PoseCatalog` loads `poses.json` first, then an optional `photo-poses.json`. It appends new entries, rejects ID collisions and requires a valid photo on each entry in the optional catalog. Only a missing optional file is ignored; malformed published metadata and missing referenced assets fail validation. There is no `photo-poses.json` in the app while the new batch remains pending.
+## Adding the remaining photos or revising a guide
 
-`source` records provenance; it does not by itself establish permission. `credit` must match the rights holder's requested wording. `license` must describe actual confirmed terms rather than an assumed license or a generic “royalty-free” label. Keep private permission correspondence and any releases securely outside the app; retain only appropriate public attribution and evidence references in repository metadata.
+1. Receive the actual missing files. Inventory series, number, filename, dimensions and SHA-256 outside Git. Reconcile duplicates or changed files before replacing anything. Use `python3 tools/stage_photo_batch.py <attachment-directory> /workspace/hello-photography-photo-intake` for male/female/couple/group/casual/selfie and globally numbered filename formats. New named group files use IDs 4001–4008; the existing global group image retains ID 1040. Review identities and duplicate hashes before importing. This helper copies originals unchanged and never publishes app assets.
+2. Review each source image and match it to its own guide. Write a clear title and simple instructions for the visible action, with hands, feet and face guidance. Keep canonical English filter codes unchanged and choose the correct category. Choose free/premium status explicitly. The supplied new photo guides are free; adding a premium label must not bypass verified purchase requirements.
+3. Import with `python3 tools/import_pose_photos.py /workspace/hello-photography-photo-intake` from the project root, after reviewing the inventory and instructions. The importer preserves originals and produces mobile copies. Review their sharpness on a phone. Update `photo-poses.json`, corresponding optimized assets and `docs/photo-assets.json` together. Check source and output hashes. Do not publish originals or private evidence. Bundled photos cannot be individually removed from an installed APK; do not present them as removable downloads.
+4. Add reviewed Amharic text by stable ID in `poses-am.json` where available. `PoseTranslations` falls back to English for absent translations and retains image metadata through `copy`. Do not translate asset paths, IDs or saved filter keys. Translate category display labels without changing canonical stored values.
+5. Run `python3 tools/import_pose_photos.py --check`, `python3 tools/validate_content.py` and relevant Android catalog/image/viewer tests. Verify every available photo decodes, has a unique guide ID, matches its category and opens from Home/Explore/Favorites/detail/full-screen. Test offline access, zoom controls, small screens, large text/TalkBack, light/dark mode, fallback behavior and legacy favorites after an update. These checks validate content handling; they cannot establish image rights.
+6. Rebuild and test the installable APK and signed release bundle. Increase the version code for each Play upload and refresh screenshots from the artifact being submitted. Update counts only to match the actual imported files. Keep billing availability, privacy disclosures and image source labels accurate.
 
-## Rights information needed before release
+## Before completing the 48-photo collection
 
-Confirm whether the photos are the owner's originals, commissioned work licensed for redistribution, generated originals with applicable usage rights, or another explicitly licensed source. Confirm that the permission permits distribution inside an Android app and its free/premium guides, and provide the required public credit and any restrictions. Include permission to use images in Play screenshots or marketing only if those uses are intended. Where applicable, retain the necessary subject or property releases. Do not infer ownership from the upload, its filename or the absence of a watermark.
-
-The latest message authorizes preparing this new batch for the app. Explicit rights and credit information have not yet been supplied. The earlier instruction excluding earlier uploads remains in force.
-
-## Import and review workflow
-
-1. Inventory the received files outside Git: series, photo number, original filename, dimensions, SHA-256, revision and permission status. Reconcile all 48 unique photographs and the final series-to-guide mapping before publishing the collection; do not silently fill missing photos with older uploads.
-2. Match each approved photo to a guide. Write useful instructions describing the visible action, hands, feet and face. Add camera-angle and lighting guidance where the current model supports it. Keep canonical English filter codes (`Individual`, `Casual`, `Standing`, and so on) unchanged; choose the category from the existing catalog where suitable. Set free/premium status deliberately rather than deriving it from a filename.
-3. Preserve the originals privately. Create efficient, visually reviewed bundled copies after approval, stripping unnecessary EXIF/GPS metadata. Maintain aspect ratio and retain important hands and feet in detail views. Choose compression and size from actual phone inspection, not a fixed file-size target alone.
-4. Add approved catalog entries and photo metadata in one reviewed change. Keep all existing IDs and data meanings. Bundled images are available offline and do not need photo-library permissions, uploads or account access. Bundled photos cannot be individually removed from the installed APK; do not label them as removable downloads.
-5. Add corresponding Amharic text entries by stable ID. `PoseTranslations` falls back to English when a new translation is absent and preserves non-text metadata through `copy`. Do not translate saved filter keys or asset paths. Update catalog tests deliberately if the new collection extends the published catalog; do not weaken checks just to satisfy a new count.
-6. Validate the catalog, duplicate IDs, missing files and image metadata; build and run relevant Android tests. Inspect the actual Home, Explore, detail and Favorites screens, including TalkBack descriptions, landscape/small-screen behavior, offline mode, missing-image fallback and saved legacy guides after an update.
-7. Rebuild the debug APK and signed release bundle only after the approved content passes review. Increase the version code before a new Play upload. Refresh store screenshots and any claims about guide counts. Never include pending originals, private permission evidence, signing credentials or earlier excluded images in the release package.
-
-The existing validation command is `python3 tools/validate_content.py`. It checks the original catalog and, if present, the optional photo catalog, metadata, duplicate IDs and image files. It cannot establish image rights or validate unimported pending batches. The exact source/translation count assertions in `PoseTranslationsTest` also describe the original 48-guide catalog and must be extended consciously when a new approved catalog is shipped.
-
-## Current pending items
-
-- Another 13 photos, their series/number mapping and confirmation that the complete set has been sent.
-- Rights, redistribution terms, required credit and any use restrictions for this new batch.
-- Final number-to-guide mapping, original instructions and translation review.
-- Asset import, build/device checks and a rebuilt release containing the approved collection.
-
-This document provides a batch workflow and proposed metadata. It does not claim that the pending photographs are already in the installed app.
-
-## Local batch intake helper
-
-Run `python3 tools/stage_photo_batch.py <attachment-directory> /workspace/hello-photography-photo-intake`
-to collect the next numbered batch. This helper verifies image files, records
-SHA-256/dimensions, distinguishes male/female/couple/unnamed numbered series, preserves
-earlier file paths and IDs, and reports the remaining photo count. Its manifest
-records received numbers by series rather than an incorrect global missing range.
-Conflicting replacements, duplicate identities and pose-ID collisions require review. It
-copies originals without pixel edits and never publishes into app assets. It
-requires Pillow, also used by the existing store artwork tooling. Keep the
-intake directory outside Git. The app collection is imported only after its
-rights, instructions and final batch have been reviewed.
+Nine source photos remain to be supplied: female 11–12 and seven additional group images. After they arrive, import and validate those actual files, then reconcile the intended 12/12/8/8/8 category counts. Report a successful 48-image check only after all 48 are present and decode successfully. Until then, clearly report the available count and missing files.

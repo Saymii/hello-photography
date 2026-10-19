@@ -1,0 +1,798 @@
+{
+  "schemaVersion": 1,
+  "collectionId": "owner-photo-set-2026-10",
+  "source": "AI-generated reference supplied by the app owner",
+  "credit": "AI-generated image supplied by Simon Solomon",
+  "authorization": "Owner authorized inclusion in Hello Photography on 2026-10-19; AI-generated reference.",
+  "expectedCount": 48,
+  "actualCount": 39,
+  "missingCount": 9,
+  "status": "partial_upload",
+  "categories": [
+    {
+      "category": "Male poses",
+      "expectedCount": 12,
+      "actualCount": 12,
+      "missingCount": 0
+    },
+    {
+      "category": "Female poses",
+      "expectedCount": 12,
+      "actualCount": 10,
+      "missingCount": 2
+    },
+    {
+      "category": "Couple photography",
+      "expectedCount": 8,
+      "actualCount": 8,
+      "missingCount": 0
+    },
+    {
+      "category": "Group photography",
+      "expectedCount": 8,
+      "actualCount": 1,
+      "missingCount": 7
+    },
+    {
+      "category": "Casual & selfie poses",
+      "expectedCount": 8,
+      "actualCount": 8,
+      "missingCount": 0
+    }
+  ],
+  "optimization": {
+    "format": "WebP",
+    "maxEdge": 1280,
+    "upscale": false,
+    "quality": 84,
+    "method": 6,
+    "pillowVersion": "12.3.0",
+    "webpVersion": "1.6.0",
+    "originalsModified": false,
+    "originalBytes": 2478888,
+    "optimizedBytes": 1892984
+  },
+  "assets": [
+    {
+      "poseId": 1001,
+      "title": "Relaxed pocket stance",
+      "category": "Male poses",
+      "original": {
+        "fileName": "1-male_pose_01.jpg",
+        "sha256": "580f62a48f041cd9262e2fda98c83eee9409410bb4a126b1624f38398ef13ae0",
+        "width": 853,
+        "height": 1280,
+        "bytes": 47506
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1001.webp",
+        "sha256": "7149b82f6aa1ec396628b3472e7b3b03d461fdab0d9c471bafd24bd4c14cbea0",
+        "width": 853,
+        "height": 1280,
+        "bytes": 33752
+      }
+    },
+    {
+      "poseId": 1002,
+      "title": "Easy forward walk",
+      "category": "Male poses",
+      "original": {
+        "fileName": "2-male_pose_02.jpg",
+        "sha256": "04f24b7747bd6c08809eee59c51404e287cc3f67eca8871bae52873c3406628e",
+        "width": 853,
+        "height": 1280,
+        "bytes": 49238
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1002.webp",
+        "sha256": "df07e54c4e7a983da26d15613f0ac5e03f1cc006ac0d104e7859ee047b45afcc",
+        "width": 853,
+        "height": 1280,
+        "bytes": 34220
+      }
+    },
+    {
+      "poseId": 1003,
+      "title": "Gentle wall lean",
+      "category": "Male poses",
+      "original": {
+        "fileName": "3-male_pose_03.jpg",
+        "sha256": "ab21de2ee08616a81bb2f920c0a3a7ddbb149c279abbbb7a5cf1cdda7c145055",
+        "width": 853,
+        "height": 1280,
+        "bytes": 58054
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1003.webp",
+        "sha256": "13190cc1aab96c143b99349b96465153ac6b78f6d2c4ff1f7a860c3ed37b0610",
+        "width": 853,
+        "height": 1280,
+        "bytes": 39904
+      }
+    },
+    {
+      "poseId": 1004,
+      "title": "Grounded stool portrait",
+      "category": "Male poses",
+      "original": {
+        "fileName": "4-male_pose_04.jpg",
+        "sha256": "c68163c9f861ed1ee615ffdf527341599821121e5dd7c69279b9752fbfab6a2b",
+        "width": 853,
+        "height": 1280,
+        "bytes": 65057
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1004.webp",
+        "sha256": "24f9a4b12edc6ff4634992a3e33824d441c1d3554a64386039dd3252b69f4c2a",
+        "width": 853,
+        "height": 1280,
+        "bytes": 47848
+      }
+    },
+    {
+      "poseId": 1005,
+      "title": "Relaxed folded arms",
+      "category": "Male poses",
+      "original": {
+        "fileName": "5-male_pose_05.jpg",
+        "sha256": "23051992a3ad5068c43b9ab4bf8ec57f793a2bbd72931ac1dac6a71c3675ed1b",
+        "width": 853,
+        "height": 1280,
+        "bytes": 48441
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1005.webp",
+        "sha256": "1325debda316cbec374fe9e19ede753238ef923d352230079c381709317c87cb",
+        "width": 853,
+        "height": 1280,
+        "bytes": 35352
+      }
+    },
+    {
+      "poseId": 1006,
+      "title": "Easy shoulder glance",
+      "category": "Male poses",
+      "original": {
+        "fileName": "1-male_pose_06.jpg",
+        "sha256": "e37640de40bf5f8b17ce2876741b6b324532885974894f3420a28155824982c6",
+        "width": 853,
+        "height": 1280,
+        "bytes": 45219
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1006.webp",
+        "sha256": "268aefabaa8dc5696b9235668a2f92c07fd427c0f9c5627a5c45eb322bf84d98",
+        "width": 853,
+        "height": 1280,
+        "bytes": 30496
+      }
+    },
+    {
+      "poseId": 1007,
+      "title": "Light jacket adjustment",
+      "category": "Male poses",
+      "original": {
+        "fileName": "2-male_pose_07.jpg",
+        "sha256": "66e4270d55a9da7b4997d2252731fbd515dd172274c8866c62553b27ea57b252",
+        "width": 853,
+        "height": 1280,
+        "bytes": 53236
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1007.webp",
+        "sha256": "422ece2ea0b47f2cd5db06585abe0e03445960dcde30c1fe46401d0747afd9d9",
+        "width": 853,
+        "height": 1280,
+        "bytes": 39390
+      }
+    },
+    {
+      "poseId": 1008,
+      "title": "Sideways chair portrait",
+      "category": "Male poses",
+      "original": {
+        "fileName": "3-male_pose_08.jpg",
+        "sha256": "27572dc65c1e7e23832db5bf9ef083736289d39db0615c6e3211aaac249d209b",
+        "width": 853,
+        "height": 1280,
+        "bytes": 61530
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1008.webp",
+        "sha256": "28424bb37f6ffdf7136e2eb5976239f800bcb78177bb9a92df5e9e6b093ba9e8",
+        "width": 853,
+        "height": 1280,
+        "bytes": 44150
+      }
+    },
+    {
+      "poseId": 1009,
+      "title": "Quiet hands-together stance",
+      "category": "Male poses",
+      "original": {
+        "fileName": "4-male_pose_09.jpg",
+        "sha256": "507311586c2e2c5a69d67c3161c6f39293d6cc54299310067be28658295cc13d",
+        "width": 853,
+        "height": 1280,
+        "bytes": 54279
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1009.webp",
+        "sha256": "254e8b67138b10833efa1cc12ffc52135798d45c7491df682bfde23445c6760d",
+        "width": 853,
+        "height": 1280,
+        "bytes": 38174
+      }
+    },
+    {
+      "poseId": 1010,
+      "title": "Relaxed low-step portrait",
+      "category": "Male poses",
+      "original": {
+        "fileName": "5-male_pose_10.jpg",
+        "sha256": "a12a705aa59be50597c840882e83f29f0130b32257b907b43f7dbe06df95e6ee",
+        "width": 853,
+        "height": 1280,
+        "bytes": 80029
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1010.webp",
+        "sha256": "342339e4905159b48ff3ad7df5a2004284b75a66dca9c9495ca0c6f64c1c8cdb",
+        "width": 853,
+        "height": 1280,
+        "bytes": 62648
+      }
+    },
+    {
+      "poseId": 1011,
+      "title": "Clean side profile",
+      "category": "Male poses",
+      "original": {
+        "fileName": "1-male_pose_11.jpg",
+        "sha256": "88dc84cbdf767443bd4da9797a3ae6f6e7d6bbbd43f8d1490c8222a8834618f2",
+        "width": 853,
+        "height": 1280,
+        "bytes": 40810
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1011.webp",
+        "sha256": "2d6bfe0a7ce56aea96de37718d2c2716c3ea9e5ae6eb6a0b68c983594f902251",
+        "width": 853,
+        "height": 1280,
+        "bytes": 27356
+      }
+    },
+    {
+      "poseId": 1012,
+      "title": "Walking-away glance",
+      "category": "Male poses",
+      "original": {
+        "fileName": "2-male_pose_12.jpg",
+        "sha256": "143b5b288fa81b51b0a2460c32d3962dfc6ba9c75e2ce7414c6a3a000c7dadc0",
+        "width": 853,
+        "height": 1280,
+        "bytes": 48592
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1012.webp",
+        "sha256": "ba30eacaa81ea1ad09f650feb1e4ffdb16b539fd54b57b068a9091d0aaf40827",
+        "width": 853,
+        "height": 1280,
+        "bytes": 33200
+      }
+    },
+    {
+      "poseId": 1040,
+      "title": "Four friends in staggered rows",
+      "category": "Group photography",
+      "original": {
+        "fileName": "4-Four-friends-in-staggered-rows-40.jpg",
+        "sha256": "30ba9e294e6d2bbb22cb90dcc0a79cd8a76b144cc288c4f1fd17708c8b2020e6",
+        "width": 853,
+        "height": 1280,
+        "bytes": 96777
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1040.webp",
+        "sha256": "eb31c23ab1410862e6258497679af2149277130af6740cb02ca45bbd52eb06a6",
+        "width": 853,
+        "height": 1280,
+        "bytes": 80684
+      }
+    },
+    {
+      "poseId": 1041,
+      "title": "Above-eye-level selfie",
+      "category": "Casual & selfie poses",
+      "original": {
+        "fileName": "3-Natural-Above-Eye-Level-Selfie-Pose-41.jpg",
+        "sha256": "4049e9f12071239be7a992da7626d12560502de0879c85e5c9e8bb4addb9b0fd",
+        "width": 853,
+        "height": 1280,
+        "bytes": 61836
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1041.webp",
+        "sha256": "7e240530c1215d7364fc48580c7db1be0823db32bc13fc65571afd80edb99173",
+        "width": 853,
+        "height": 1280,
+        "bytes": 46694
+      }
+    },
+    {
+      "poseId": 1042,
+      "title": "Casual mirror selfie",
+      "category": "Casual & selfie poses",
+      "original": {
+        "fileName": "2-Casual-full-body-mirror-selfie-42.jpg",
+        "sha256": "5497ab50e55d7d85181b6d28233c0a88cdc2c58454f8948feb74e7b3411b942b",
+        "width": 853,
+        "height": 1280,
+        "bytes": 88112
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1042.webp",
+        "sha256": "c381158bc2012f716a40201c48f9f624aaaf429239fe6bde112ed3593e0cb7db",
+        "width": 853,
+        "height": 1280,
+        "bytes": 72294
+      }
+    },
+    {
+      "poseId": 1043,
+      "title": "Cafe cup portrait",
+      "category": "Casual & selfie poses",
+      "original": {
+        "fileName": "1-Relaxed-Cafe-Portrait-With-Coffee-Cup-43.jpg",
+        "sha256": "9e2cbccc08f2c97492c778fbf527c984357f6561bd8e1931873ba4edd85547ff",
+        "width": 853,
+        "height": 1280,
+        "bytes": 88919
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1043.webp",
+        "sha256": "45d84e32e93cdcca50b72d6c94a2ec773714d8ec89aba1666565cfc64e3af0e9",
+        "width": 853,
+        "height": 1280,
+        "bytes": 71698
+      }
+    },
+    {
+      "poseId": 1044,
+      "title": "Relaxed railing lookout",
+      "category": "Casual & selfie poses",
+      "original": {
+        "fileName": "5-Relaxed-Railing-Lookout-44.jpg",
+        "sha256": "1a819ba87729e5fbf4be1087df0b45e7a05dd841e2815e1b416752ae37a9fd0e",
+        "width": 853,
+        "height": 1280,
+        "bytes": 78107
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1044.webp",
+        "sha256": "5255c58185d60e578b191f9c1e66c1154f529a60feb2ed53d76c457284d13391",
+        "width": 853,
+        "height": 1280,
+        "bytes": 62420
+      }
+    },
+    {
+      "poseId": 1045,
+      "title": "Looking up from a book",
+      "category": "Casual & selfie poses",
+      "original": {
+        "fileName": "4-Looking-up-from-a-book-45.jpg",
+        "sha256": "34733619ef09e3df7999775934f76a49c7501be13f88158d1e99076b3d1014b9",
+        "width": 853,
+        "height": 1280,
+        "bytes": 103474
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1045.webp",
+        "sha256": "b77c3e3d6b58da2e129e603019a7265a6e70f1fc754086b2bba88a196aefe1ca",
+        "width": 853,
+        "height": 1280,
+        "bytes": 88798
+      }
+    },
+    {
+      "poseId": 1046,
+      "title": "Casual tote-bag walk",
+      "category": "Casual & selfie poses",
+      "original": {
+        "fileName": "3-Casual-tote-bag-walk-sideways-glance-46.jpg",
+        "sha256": "00bea1f274de1d42ec3b79791df488d4af8a3b610fe0119084513547166b6ae9",
+        "width": 853,
+        "height": 1280,
+        "bytes": 54268
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1046.webp",
+        "sha256": "2f96db0ecacbc3572f8c6df8c08975e91e28bc8319c0359942e0b6686bd0ad75",
+        "width": 853,
+        "height": 1280,
+        "bytes": 40922
+      }
+    },
+    {
+      "poseId": 1047,
+      "title": "Chair portrait with chin in hand",
+      "category": "Casual & selfie poses",
+      "original": {
+        "fileName": "2-Relaxed-chair-pose-chin-in-hand-47.jpg",
+        "sha256": "f753ceae59447655d835c1df96998bb3a12577287efac0d42e9282c6714fcae9",
+        "width": 853,
+        "height": 1280,
+        "bytes": 83518
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1047.webp",
+        "sha256": "2f5f57995d9c9356a4ea78bc26e54ffb02e08676f034edefefd1af830f4b359a",
+        "width": 853,
+        "height": 1280,
+        "bytes": 71512
+      }
+    },
+    {
+      "poseId": 1048,
+      "title": "Friendly three-quarter wave",
+      "category": "Casual & selfie poses",
+      "original": {
+        "fileName": "1-Relaxed-three-quarter-wave-portrait-48.jpg",
+        "sha256": "5752c9e3fb6e6b8461a98b02c93b5e8197df96152de15ef42540bf4a4d122463",
+        "width": 853,
+        "height": 1280,
+        "bytes": 51685
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/1048.webp",
+        "sha256": "44bd22309d957b319eae7a33e05a8beab813df2ce9403489ca86934cd24a1f22",
+        "width": 853,
+        "height": 1280,
+        "bytes": 38608
+      }
+    },
+    {
+      "poseId": 2001,
+      "title": "Easy weight-shift stance",
+      "category": "Female poses",
+      "original": {
+        "fileName": "1-female_pose_01.jpg",
+        "sha256": "af98095c499762adf06e6576efb844f28b3fc68a83223d004fe6923158ce3201",
+        "width": 853,
+        "height": 1280,
+        "bytes": 61581
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/2001.webp",
+        "sha256": "4a0159f4d1ed4bfb88c48ebe5e5229671ae0bf278e39b66ff00b5d64e6730d2d",
+        "width": 853,
+        "height": 1280,
+        "bytes": 49938
+      }
+    },
+    {
+      "poseId": 2002,
+      "title": "Natural walk toward the camera",
+      "category": "Female poses",
+      "original": {
+        "fileName": "2-female_pose_02.jpg",
+        "sha256": "73f3375580a0c3fc8fb20887e51f9227c83568f8e22b5c595cf1ba55c35d843a",
+        "width": 853,
+        "height": 1280,
+        "bytes": 55103
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/2002.webp",
+        "sha256": "2aa79f149ae63e19b588e006aac98a76e8b777b68b81932fae2bdaa17bc7dc0c",
+        "width": 853,
+        "height": 1280,
+        "bytes": 40230
+      }
+    },
+    {
+      "poseId": 2003,
+      "title": "Light wall lean",
+      "category": "Female poses",
+      "original": {
+        "fileName": "3-female_pose_03.jpg",
+        "sha256": "d232eb1790b4c4cc648f502301190c4124684daee95341bb260bfa6ed9b5c2d7",
+        "width": 853,
+        "height": 1280,
+        "bytes": 55983
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/2003.webp",
+        "sha256": "10b32b452e48b3847cd0d849eed7dcac46b2b2913743ed83bd0b9d17bbedb1f4",
+        "width": 853,
+        "height": 1280,
+        "bytes": 40950
+      }
+    },
+    {
+      "poseId": 2004,
+      "title": "Comfortable stool portrait",
+      "category": "Female poses",
+      "original": {
+        "fileName": "4-female_pose_04.jpg",
+        "sha256": "084e1caeaaeff95181b49e102ff3a62b9d63994dc2cbe2635e3e66e2511ef76e",
+        "width": 853,
+        "height": 1280,
+        "bytes": 62485
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/2004.webp",
+        "sha256": "9a957ae5b3a8cdfa19374f9106cb6e7e2037f3c0157936aacd32d2bbe8b8021a",
+        "width": 853,
+        "height": 1280,
+        "bytes": 49266
+      }
+    },
+    {
+      "poseId": 2005,
+      "title": "Three-quarter hand-on-hip stance",
+      "category": "Female poses",
+      "original": {
+        "fileName": "5-female_pose_05.jpg",
+        "sha256": "b20445717ed9366ae435fae0818a2b0e9c6b8471554178bf21f3c07e8d55aa26",
+        "width": 853,
+        "height": 1280,
+        "bytes": 46373
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/2005.webp",
+        "sha256": "0148d36ab98832bf74d430a2b569ea9d7c87769cdb80cdcc4bc1c739b6da1d61",
+        "width": 853,
+        "height": 1280,
+        "bytes": 33792
+      }
+    },
+    {
+      "poseId": 2006,
+      "title": "Soft look back",
+      "category": "Female poses",
+      "original": {
+        "fileName": "1-female_pose_06.jpg",
+        "sha256": "25298b2efb3ac2920023993ed0ae45a104cfd46cb0a42f205121fc064a62fb2c",
+        "width": 853,
+        "height": 1280,
+        "bytes": 63432
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/2006.webp",
+        "sha256": "065a59b97bb9826ebc65a4086f987af6356d67709d4e12ce2cc383073f0c2aac",
+        "width": 853,
+        "height": 1280,
+        "bytes": 52732
+      }
+    },
+    {
+      "poseId": 2007,
+      "title": "Light temple touch",
+      "category": "Female poses",
+      "original": {
+        "fileName": "2-female_pose_07.jpg",
+        "sha256": "c8abaef27fca6cd7dafcd337ca1ab4cb93a51b165a04e415acce71bd2751c6d4",
+        "width": 853,
+        "height": 1280,
+        "bytes": 54503
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/2007.webp",
+        "sha256": "ef6297761878748a90cc842ee70c0d8c3c3367a443b4a98f9ec059fb715a8e75",
+        "width": 853,
+        "height": 1280,
+        "bytes": 40254
+      }
+    },
+    {
+      "poseId": 2008,
+      "title": "Relaxed sideways chair portrait",
+      "category": "Female poses",
+      "original": {
+        "fileName": "3-female_pose_08.jpg",
+        "sha256": "463f8f7009834b45bada8ca954be7022d5cfd6b77af94a9cb0fa9cc4706f307f",
+        "width": 853,
+        "height": 1280,
+        "bytes": 70898
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/2008.webp",
+        "sha256": "4b335177f47386f085e39a15af1466ed32465702c76b0a1957bc758c608f7b1c",
+        "width": 853,
+        "height": 1280,
+        "bytes": 54894
+      }
+    },
+    {
+      "poseId": 2009,
+      "title": "Easy hands-behind-back stance",
+      "category": "Female poses",
+      "original": {
+        "fileName": "4-female_pose_09.jpg",
+        "sha256": "d984032e0d62ea6e3b6c179169418331c832ad06988cabd61423c90efbff4432",
+        "width": 853,
+        "height": 1280,
+        "bytes": 42526
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/2009.webp",
+        "sha256": "9afa14fd1976af91109c8d3b1b0c5ef401926b61190c98c64b13c3525c951e7e",
+        "width": 853,
+        "height": 1280,
+        "bytes": 30324
+      }
+    },
+    {
+      "poseId": 2010,
+      "title": "Thoughtful seated step portrait",
+      "category": "Female poses",
+      "original": {
+        "fileName": "5-female_pose_10.jpg",
+        "sha256": "7912ff9b850e26056fd075a9e1ce2950ab9b8cca58e9baee1cfec3d62e8ee9b3",
+        "width": 853,
+        "height": 1280,
+        "bytes": 75062
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/2010.webp",
+        "sha256": "6fcb63dfe8e8abbf412e1ebddf6243bfad15818a76ed86d8214742503e3b39d0",
+        "width": 853,
+        "height": 1280,
+        "bytes": 58154
+      }
+    },
+    {
+      "poseId": 3001,
+      "title": "Side-by-side handhold",
+      "category": "Couple photography",
+      "original": {
+        "fileName": "1-couple_pose_01.jpg",
+        "sha256": "a5553b9e8c5a085b6d449f7a7f2405f7013e7579944c4f04e2ff35cb4291e7b8",
+        "width": 853,
+        "height": 1280,
+        "bytes": 66096
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/3001.webp",
+        "sha256": "f2c43b06a928695d97394ebfb4de1e6957196636901abd553b87746f0d50b9ec",
+        "width": 853,
+        "height": 1280,
+        "bytes": 48230
+      }
+    },
+    {
+      "poseId": 3002,
+      "title": "Easy walk together",
+      "category": "Couple photography",
+      "original": {
+        "fileName": "2-couple_pose_02.jpg",
+        "sha256": "35645110548feb9bdc178f32569400aad9f51389e699dec9f74e2497533c135f",
+        "width": 853,
+        "height": 1280,
+        "bytes": 65817
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/3002.webp",
+        "sha256": "141be7c3694f3c3f8fcf06307915e379063d8abd31ccacabfdc0f5c0a8e18df1",
+        "width": 853,
+        "height": 1280,
+        "bytes": 50270
+      }
+    },
+    {
+      "poseId": 3003,
+      "title": "Gentle forehead connection",
+      "category": "Couple photography",
+      "original": {
+        "fileName": "3-couple_pose_03.jpg",
+        "sha256": "03410fa03f0ffc40e66600b1590208296111b7c729720bd283b97484ef946612",
+        "width": 853,
+        "height": 1280,
+        "bytes": 64755
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/3003.webp",
+        "sha256": "55d526bdec821371bc2d659a8267b895c4ddb4bb3f1c352395f92a41b7efd0bc",
+        "width": 853,
+        "height": 1280,
+        "bytes": 48694
+      }
+    },
+    {
+      "poseId": 3004,
+      "title": "Quiet bench moment",
+      "category": "Couple photography",
+      "original": {
+        "fileName": "4-couple_pose_04.jpg",
+        "sha256": "cff1e954acd0aec26725e4fe5a1a1b14c7f7fefa631dcdc89c24145b67a0c0c1",
+        "width": 853,
+        "height": 1280,
+        "bytes": 78903
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/3004.webp",
+        "sha256": "464c9de25c90dbca438481858c4b8ec445394a8f9936c0e97462c7f443e6bdd2",
+        "width": 853,
+        "height": 1280,
+        "bytes": 60758
+      }
+    },
+    {
+      "poseId": 3005,
+      "title": "Soft waist embrace",
+      "category": "Couple photography",
+      "original": {
+        "fileName": "5-couple_pose_05.jpg",
+        "sha256": "484e69d8fd523917b1987b82e0ab627d0cec704d9a55519eb0c211a1faf1ae1d",
+        "width": 853,
+        "height": 1280,
+        "bytes": 61564
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/3005.webp",
+        "sha256": "d796ad0eef7dd97417b9b18f55403381e4503d3c975b5024b114b30c30c8e795",
+        "width": 853,
+        "height": 1280,
+        "bytes": 46036
+      }
+    },
+    {
+      "poseId": 3006,
+      "title": "Easy back-to-back portrait",
+      "category": "Couple photography",
+      "original": {
+        "fileName": "1-couple_pose_06.jpg",
+        "sha256": "f633d9b2fae1a006d7a8242262cc8cb264ee45624b484abbd4842bbaa8c8d856",
+        "width": 853,
+        "height": 1280,
+        "bytes": 59131
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/3006.webp",
+        "sha256": "97dfa96c0e9afaa8c010ce2c13cbc32acedabfef57ff8a09ac9c87ac5d4a86c9",
+        "width": 853,
+        "height": 1280,
+        "bytes": 42970
+      }
+    },
+    {
+      "poseId": 3007,
+      "title": "Walking away together",
+      "category": "Couple photography",
+      "original": {
+        "fileName": "2-couple_pose_07.jpg",
+        "sha256": "a83fa6586dd27c13075ff5487a6b6824f8b79d2cb19863701332a0bb575393ea",
+        "width": 853,
+        "height": 1280,
+        "bytes": 67755
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/3007.webp",
+        "sha256": "bb04a4d2d052fca39627fe1f51d8b12c217cd9c7cb3fadbe06a0c7730b7b28c9",
+        "width": 853,
+        "height": 1280,
+        "bytes": 52072
+      }
+    },
+    {
+      "poseId": 3008,
+      "title": "Face-to-face handhold",
+      "category": "Couple photography",
+      "original": {
+        "fileName": "3-couple_pose_08.jpg",
+        "sha256": "bf5d629ca1e09b146cc92a2cb21db8431870f905c20b8db8ca92f7f212b81767",
+        "width": 853,
+        "height": 1280,
+        "bytes": 68234
+      },
+      "optimized": {
+        "assetPath": "photos/owner-photo-set-2026-10/3008.webp",
+        "sha256": "285e9af4a51a977d29a85d005cce8cae7fe24eb42f453dfbe01011b9a7348d97",
+        "width": 853,
+        "height": 1280,
+        "bytes": 53300
+      }
+    }
+  ]
+}

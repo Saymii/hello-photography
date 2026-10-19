@@ -3,13 +3,16 @@ package com.posemaster.app
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.os.Looper
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
+import com.posemaster.app.data.PoseCatalog
 import java.io.File
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.robolectric.RobolectricTestRunner
+import org.robolectric.Shadows.shadowOf
 import org.robolectric.annotation.Config
 import org.robolectric.annotation.GraphicsMode
 
@@ -24,6 +27,17 @@ import org.robolectric.annotation.GraphicsMode
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 class StoreScreenshotTest {
     @get:Rule val compose = createAndroidComposeRule<MainActivity>()
+
+    private fun waitForDecodedPhoto(altText: String) {
+        compose.waitUntil(timeoutMillis = 10_000) {
+            // Coil completes background decoding on Main; Compose's clock alone
+            // does not drain Robolectric's paused Looper.
+            shadowOf(Looper.getMainLooper()).idle()
+            compose.onAllNodesWithContentDescription(altText, useUnmergedTree = true)
+                .fetchSemanticsNodes().isNotEmpty()
+        }
+        compose.waitForIdle()
+    }
 
     private fun capture(name: String) {
         compose.waitForIdle()
@@ -46,6 +60,7 @@ class StoreScreenshotTest {
     }
 
     @Test fun captureActualEnglishPhoneScreens() {
+        val firstPhoto = PoseCatalog.load(compose.activity.assets).first { it.photo != null }
         // Prepare this app's real local preferences; never seed a premium entitlement.
         compose.runOnUiThread {
             compose.activity.getSharedPreferences("preferences", Context.MODE_PRIVATE)
@@ -63,6 +78,7 @@ class StoreScreenshotTest {
         capture("02-personalized-home")
 
         compose.onNodeWithText("Explore Poses", useUnmergedTree = true).performClick()
+        waitForDecodedPhoto(firstPhoto.photo!!.altText)
         capture("03-explore-poses")
 
         compose.onNodeWithTag("pose_search").performTextInput("Shared horizon")
@@ -70,6 +86,14 @@ class StoreScreenshotTest {
         compose.onNodeWithTag("explore_list").performScrollToNode(guide)
         compose.onNode(guide).performClick()
         capture("04-original-pose-guide")
+
+        compose.onNodeWithText("Explore Poses", useUnmergedTree = true).performClick()
+        compose.onNodeWithTag("pose_search").performTextReplacement(firstPhoto.name)
+        val photoGuide = hasText(firstPhoto.name) and !hasSetTextAction()
+        compose.onNodeWithTag("explore_list").performScrollToNode(photoGuide)
+        compose.onNode(photoGuide).performClick()
+        waitForDecodedPhoto(firstPhoto.photo!!.altText)
+        capture("07-ai-photo-guide")
 
         compose.onNodeWithText("Learn", useUnmergedTree = true).performClick()
         capture("05-learning-academy")

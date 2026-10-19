@@ -1,5 +1,67 @@
 # Validation – Hello Photography
 
+## AI photo library 1.0.1 (2026-10-19)
+
+Built the native Android app with version **1.0.1 / code 4**, the same
+`com.saymii.hellophotography` identity and upload certificate, target API 36,
+and minimum API 26. This update contains **39 real supplied AI references**:
+12 male, 10 female, 8 couple, 1 group and 8 casual/selfie images. Female 11–12
+and seven group photos are missing; a successful 48-image check is not claimed.
+The original 48 illustrated guide IDs, database and preferences remain intact.
+
+- `python3 tools/import_pose_photos.py --check` and
+  `python3 tools/validate_content.py` passed. All 39 original SHA-256 values
+  remain unchanged outside Git. Derived WebP copies preserve aspect ratio at
+  853 × 1280, strip metadata and total 1,892,984 bytes versus 2,478,888 original
+  bytes (23.6% smaller). Repeated import produced identical public outputs.
+- The full signed command `assembleDebug testDebugUnitTest lintDebug
+  bundleRelease assembleRelease lintRelease` completed in 3m 41s with offline
+  Gradle, using private signing settings outside Git. **58 tests passed**,
+  zero failures, errors or skips; full-run XML timestamps 16:34:40–16:34:59 UTC.
+  Results were retained locally under `artifacts/photo-validation/full-test-results/`.
+- New tests decode **every one of the 39 bundled WebPs through real Coil**,
+  verify nonblank photographic pixels/dimensions and disk data source, forbid
+  network access, exercise category/title search, preserve the original 48
+  guides, and check full-screen image accessibility, zoom/reset, next image,
+  close and underlying guide context. Existing app, learning and storage tests
+  remain passing. Lint reports zero errors and 14 advisory warnings per variant.
+- The screenshot test was subsequently rerun successfully in 33s after adding
+  asynchronous photo-decode waits. Seven real Activity renders were refreshed
+  in `store-listing/screenshots/phone/`, including an actual AI photo guide;
+  provenance and checksums accompany them. These are native Robolectric API 34
+  renders, distinct from the installed release APK check below.
+- Both the signed APK and AAB contain the exact 39 optimized images and catalog,
+  verified against `docs/photo-assets.json`. Neither contains private originals
+  or signing settings. `apksigner` verified the APK; `jarsigner` verified the
+  AAB (expected self-signed upload-certificate warnings); bundletool 1.18.1
+  validated the bundle. APK ZIP alignment passed `zipalign -c -P 16 4`.
+- The exact signed APK installed as an update on the API 28 Android emulator.
+  The saved Photographer role survived, and Home displayed a decoded photo.
+  A fresh launch of photo 1001 showed its real image; full-screen 1/39, zoom
+  100% → 150% → reset, next photo 2/39, and close back to the original guide
+  passed through Android UI automation. Repeated UI dumps waited for the actual
+  rendered state on this software emulator. Captures are
+  `docs/device-validation/photo-guide-api28.png` and `photo-viewer-api28.png`.
+  No app AndroidRuntime crash was logged. System UI showed a boot-time ANR
+  before stabilizing; no KVM was available, so this is not a performance test.
+- Isolated importer checks reject stale output assets and duplicate originals
+  before changing catalog/manifest/image outputs. The private source originals
+  were rehashed after verification and remained unchanged.
+
+Artifacts:
+
+| File | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `release/HelloPhotography-1.0.1-test.apk` | 3,780,149 | `e68a891409f7f2615728f9fad3b46ded5a8ef4bddd507c274118085825cca2b4` |
+| `release/HelloPhotography-1.0.1.aab` | 6,038,566 | `40b90055bdfd3356170d18be7eee3a29e809129055af8e1a40f5df0f3439e31c` |
+| `artifacts/HelloPhotography-1.0.1-debug.apk` | 23,374,344 | `3a9aa8dd4917c36ca53180cca5de98257339de5cd01e5a9fefef892652c2fcb4` |
+
+The installable release APK is built by `assembleRelease` from the same release
+source and signed with the upload key; it is not a Play-delivered APK. The AAB
+is an upload artifact, not an installed app or evidence of Play approval.
+Purchases and remote AI recommendations remain unconfigured. Physical-device,
+16 KB runtime and Play-internal-track checks remain before production submission.
+
 ## Photo collection preparation (2026-10-19, not a new release)
 
 The app can now append a reviewed local `photo-poses.json` catalog, with Coil

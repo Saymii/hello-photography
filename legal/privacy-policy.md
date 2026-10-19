@@ -2,7 +2,7 @@
 
 **Prepared for owner review; not yet hosted.** This policy describes the intended ads-free Google Play release. Verify it against the exact signed artifact and publish the final text at a public HTTPS URL before a public release. Keep the in-app policy consistent with that page. A local file path is not a Play Console privacy-policy URL.
 
-- Effective date: **2026-10-17**
+- Effective date: **2026-10-19**
 - App: **Hello Photography**
 - Google Play application ID: **com.saymii.hellophotography**
 - Publisher responsible for this app: **Simon Solomon**
@@ -20,7 +20,7 @@ The current app does not require sign-up and does not synchronize this informati
 
 ## Photos and permissions
 
-The current app does not capture, import, or upload your photographs. Its posing references are original illustrations, identified as illustrations. It does not request camera, microphone, location, contacts, or photo-library access.
+The current app does not capture, import, or upload your photographs. Its bundled posing references include original illustrations and AI-generated images supplied by the publisher, with their source identified in the app. These reference assets ship with the app; they are not photographs collected from your device. It does not request camera, microphone, location, contacts, or photo-library access.
 
 If you enable daily inspiration, the app requests Android notification permission where required. Reminders are scheduled locally and may be delayed by Android's battery settings. You can switch reminders off in Profile or in Android's notification settings. Internet access is available for the optional Google Play catalog connection and links you choose to open; it is not required to read bundled guides.
 
@@ -32,7 +32,7 @@ Opening support or other external links starts a browser or another app, whose p
 
 ## Google Play and premium previews
 
-All 48 bundled sample posing guides are free to read, including four labeled as premium collection previews. Advanced Academy courses show syllabus previews, while their premium lessons remain locked. These previews do not establish a paid entitlement. The supplied build does not complete a subscription purchase or grant paid access. If subscription product IDs are configured, the app can connect to Google Play to obtain product availability and localized prices. Google handles its own Play account and store information under the [Google Privacy Policy](https://policies.google.com/privacy). The publisher does not receive a payment card number from that catalog query.
+The 48 original illustrated sample guides and the 39 available AI-generated photo guides are free to read, including four original guides labeled as premium collection previews. Advanced Academy courses show syllabus previews, while their premium lessons remain locked. These previews do not establish a paid entitlement. The supplied build does not complete a subscription purchase or grant paid access. If subscription product IDs are configured, the app can connect to Google Play to obtain product availability and localized prices. Google handles its own Play account and store information under the [Google Privacy Policy](https://policies.google.com/privacy). The publisher does not receive a payment card number from that catalog query.
 
 Purchases will require a separately configured and tested Google Play Billing flow and secure server verification. Before enabling purchases, we will update this policy to identify the actual verification service, account identifiers if used, purchase-token and entitlement handling, retention, deletion, and service providers. No premium entitlement is granted by an unverified local switch.
 

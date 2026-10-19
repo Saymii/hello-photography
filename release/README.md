@@ -1,16 +1,21 @@
-# Hello Photography 1.0.0 — Play upload files
+# Hello Photography 1.0.1 — Play upload files
 
 - **Application ID:** `com.saymii.hellophotography`
-- **Version:** `1.0.0` / code `3`
+- **Version:** `1.0.1` / code `4`
 - **Minimum Android:** 8.0 (API 26); target API 36
 - **Publisher:** Simon Solomon · simonsolomon436@gmail.com
 
-`HelloPhotography-1.0.0.aab` is the signed Google Play upload bundle. An AAB
+This update includes **39 supplied AI-generated photos** (12 male, 10 female,
+8 couple, 1 group and 8 casual/selfie), with optimized offline copies, simple
+instructions and full-screen zoom. The planned 48-photo set is missing female
+11–12 and seven group files. The original 48 illustrated guide IDs are retained.
+
+`HelloPhotography-1.0.1.aab` is the signed Google Play upload bundle. An AAB
 cannot be opened or installed on a phone. Upload it to the app's internal testing
 track in Play Console after enrolling in Play App Signing.
 
-`HelloPhotography-1.0.0-test.apk` is a locally installable APK generated from the
-same bundle and signed with the upload key. Open it using Android Files, allow
+`HelloPhotography-1.0.1-test.apk` is a locally installable APK built from the
+same release source and signed with the upload key. Open it using Android Files, allow
 installation from that source if requested, then tap Install. It needs Android
 8.0 or newer. This new package installs separately from the earlier
 `com.posemaster.app` and from the `.debug` package. Their saved data is separate.

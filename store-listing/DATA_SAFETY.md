@@ -1,15 +1,16 @@
 # Play disclosures worksheet — Hello Photography
 
-Prepared for the **new** Google Play application `com.saymii.hellophotography`, version `1.0.0` / code `3`. The owner is **Simon Solomon**; public support/privacy contact: **simonsolomon436@gmail.com**. This is a completion and verification worksheet, not a submitted declaration or legal approval. Fill the Console for the exact signed release and actual services, not a debug build or a future feature plan.
+Prepared for the **new** Google Play application `com.saymii.hellophotography`, version `1.0.1` / code `4`. The owner is **Simon Solomon**; public support/privacy contact: **simonsolomon436@gmail.com**. This is a completion and verification worksheet, not a submitted declaration or legal approval. Fill the Console for the exact signed release and actual services, not a debug build or a future feature plan.
 
 ## Current release design
 
 - Photographers, Models, and Everyone roles, preferences, Room favorites/collections, recently viewed guides, and academy progress are device-local.
 - Pose recommendations run through offline rules. There is no configured AI API, user-photo upload, cloud sign-in, remote catalog, publisher analytics, or cloud synchronization.
+- The app bundles 39 owner-supplied AI-generated posing references for offline reading. They are static app assets; it does not access the user's photo library or send photos to an AI model.
 - Notifications are optional local reminders. Android 13+ permission is requested on opt-in. No FCM/push service is configured.
 - Pose text and feedback use Android's share chooser. Nothing is automatically posted to a publisher service. A receiving app and external GitHub/browser links have their own processing.
 - The Play release excludes AdMob and UMP SDKs. Debug/test components are not evidence about the Play release; audit the release dependency graph and merged manifest.
-- Billing catalog scaffolding remains. Empty product IDs do not enable real purchases. The purchase and entitlement backend is not connected. All 48 sample posing guides are free to read, including four premium-labeled collection previews. Advanced Academy courses show syllabus previews, while their premium lessons remain locked. A release with configured catalog queries must also assess the actual Play SDK behavior.
+- Billing catalog scaffolding remains. Empty product IDs do not enable real purchases. The purchase and entitlement backend is not connected. All 39 AI photo guides and 48 original sample posing guides are free to read, including four premium-labeled collection previews. Advanced Academy courses show syllabus previews, while their premium lessons remain locked. A release with configured catalog queries must also assess the actual Play SDK behavior.
 - Android backup is disabled and backup/transfer exclusion rules are provided. In-app deletion clears app-managed local data and reminders. There is no cloud account to delete.
 
 ## Evidence required before submitting answers

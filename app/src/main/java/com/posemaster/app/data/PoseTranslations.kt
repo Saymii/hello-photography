@@ -71,6 +71,7 @@ private val amharicCategories = mapOf(
     "Maternity photography" to "የእርግዝና ፎቶግራፍ",
     "Professional business portraits" to "የሙያ እና የሥራ ፎቶዎች",
     "Selfie poses" to "የራስ ፎቶ ፖዞች",
+    "Casual & selfie poses" to "የዕለት ተዕለት እና የራስ ፎቶ ፖዞች",
     "Instagram and TikTok poses" to "የኢንስታግራም እና የቲክቶክ ፖዞች",
     "Group photography" to "የቡድን ፎቶግራፍ",
     "Indoor photography" to "የቤት ውስጥ ፎቶግራፍ",
