@@ -41,6 +41,6 @@ import com.posemaster.app.services.*
   }}
   if(status.isNotBlank())item{Text(status)}
   item {HpNotice(tr(language,"Purchasing is not enabled","ግዢ አልተከፈተም"),tr(language,"No purchase or premium unlock happens in this build. A published Play subscription, authenticated purchase flow, and a deployed verification backend are required. Selecting a plan only compares the options.","በዚህ ስሪት ግዢ ወይም ፕሪሚየም መክፈት አይከናወንም። በPlay የታተመ ምዝገባ፣ የተረጋገጠ የግዢ ሂደት እና የማረጋገጫ አገልጋይ ያስፈልጋሉ። እቅድ መምረጥ አማራጮቹን ለማነጻጸር ብቻ ነው።"))}
-  item {HpTip(tr(language,"Your free plan","ነፃ እቅድዎ"),tr(language,"48 sample posing guides, beginner courses, daily inspiration, offline rules, and 20 favorites. Previous saved collections remain intact.","48 ናሙና የአቋም መመሪያዎች፣ ጀማሪ ኮርሶች፣ የዕለቱ ሃሳብ፣ የኦፍላይን ምክሮች እና 20 ተወዳጆች። የነበሩ ስብስቦች ይጠበቃሉ።"));TextButton(onClick=onPolicies){Text(tr(language,"Privacy, terms & settings →","ግላዊነት፣ ውሎች እና ቅንብሮች →"))}}
+  item {HpTip(tr(language,"Your free plan","ነፃ እቅድዎ"),tr(language,"Bundled posing guides, beginner courses, daily inspiration, offline rules, and 20 favorites. Previous saved collections remain intact.","የተካተቱ የአቋም መመሪያዎች፣ ጀማሪ ኮርሶች፣ የዕለቱ ሃሳብ፣ የኦፍላይን ምክሮች እና 20 ተወዳጆች። የነበሩ ስብስቦች ይጠበቃሉ።"));TextButton(onClick=onPolicies){Text(tr(language,"Privacy, terms & settings →","ግላዊነት፣ ውሎች እና ቅንብሮች →"))}}
  }
 }

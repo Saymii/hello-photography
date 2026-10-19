@@ -1,5 +1,37 @@
 # Validation – Hello Photography
 
+## Photo collection preparation (2026-10-19, not a new release)
+
+The app can now append a reviewed local `photo-poses.json` catalog, with Coil
+asset loading, full-frame references, credits, image-rights text and an explicit
+illustration fallback. Original IDs 1–48 and Room storage retain their meaning.
+The new 48-photo set reserves IDs 1001–1048; five originals numbered 44–48 and
+five draft descriptions are staged outside Git. No new owner photo or optional
+photo catalog is bundled yet. Remaining files 01–43, rights/credit confirmation
+and completed content review are pending. The checked-in 1.0.0 release artifacts
+below remain unchanged and do not include this collection.
+
+Validation of the preparation source:
+
+- `./gradlew --offline --no-daemon assembleDebug testDebugUnitTest lintDebug`
+  succeeded in 44s. **54 tests passed**, zero failures/errors/skips; current test
+  XML timestamps 14:12:50–14:13:06 UTC. This includes the existing 43 tests,
+  nine optional-catalog/metadata/path/ID tests and two real Coil image tests.
+- Renderer tests decode an original plain-color fixture through the actual Coil
+  asset fetcher/decoder and verify bitmap dimensions/pixel, disk data source,
+  post-decode success label, accessibility text, missing-image fallback and zero
+  network requests. The fixture is debug-only, unrelated to owner photographs.
+  Test waits drain Robolectric's paused main looper for asynchronous callbacks.
+- Lint reports no errors and 14 advisory warnings. Catalog validation passes all
+  48 original guides across 24 categories. CLI photo validation was checked with
+  a valid local fixture and rejection of ID collisions, missing rights metadata,
+  missing images and remote paths.
+- All five staged files are valid 853 × 1280 RGB JPEGs. Their copied bytes match
+  recorded SHA-256 values. Repeated intake stays at five unique slots; conflicting
+  replacement content and staging inside the Git checkout are rejected.
+- No new signed AAB or public photo-containing APK has been produced. Prepare
+  those after the complete approved collection and updated release copy are ready.
+
 ## Play release 1.0.0 (2026-10-17)
 
 Built the actual native app in the existing checkout with application ID

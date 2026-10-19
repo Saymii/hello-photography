@@ -4,6 +4,16 @@ A native Android photography and posing guide built with **Kotlin, Jetpack Compo
 
 The earlier distributed app used `com.posemaster.app`. The new Play identity and the development identity `com.saymii.hellophotography.debug` install separately; Android does not automatically copy private favorites or progress between packages. Data remains in the legacy installation. Do not uninstall it expecting an automatic migration. Subsequent updates of the same new package preserve its local data when signed appropriately.
 
+## New photo collection in preparation
+
+The owner is preparing a new set of 48 photos (19 October 2026). Five numbered
+44–48 have been received and staged outside Git. The app now supports optional
+bundled photo references through Coil, full-frame display, credits and illustration
+fallbacks. Existing guide IDs and favorites retain their meaning. See
+[the collection workflow](docs/PHOTO_COLLECTION.md) for the remaining batch,
+rights metadata and import steps. No new photos are included in the checked-in
+1.0.0 APK/AAB; rebuild those after the approved collection is complete.
+
 ## Install and run
 
 Requires Android 8.0 / API 26 or newer. Open this project in Android Studio with JDK 17 or 21, **SDK 36 and Build Tools 36.0.0**. Compile and target SDK are 36. Use the pinned **Android Gradle Plugin 8.10.1 / Gradle 8.11.1** wrapper. On the managed cloud machine, first run `source tools/cloud-env.sh`.

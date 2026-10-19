@@ -5,7 +5,6 @@ import androidx.room.*
 import androidx.room.withTransaction
 import com.posemaster.app.domain.Pose
 import kotlinx.coroutines.flow.Flow
-import org.json.JSONArray
 
 @Entity(tableName = "saved_poses")
 data class SavedPose(@PrimaryKey val poseId: Int, val collection: String = "My favorites", val downloaded: Boolean = false)
@@ -22,11 +21,7 @@ abstract class PoseDatabase : RoomDatabase() { abstract fun saved(): SavedDao }
 class PoseRepository(context: Context) {
  private val db = Room.databaseBuilder(context.applicationContext, PoseDatabase::class.java, "posemaster.db").build()
  val saved = db.saved().observe()
- val poses: List<Pose> = JSONArray(context.assets.open("poses.json").bufferedReader().use { it.readText() }).let { a ->
-  (0 until a.length()).map { index -> a.getJSONObject(index).let {
-   Pose(it.getInt("id"), it.getString("name"), it.getString("category"), it.getString("subject"), it.getString("style"), it.getString("location"), it.getString("position"), it.getString("difficulty"), it.getBoolean("premium"), it.getString("steps"), it.getString("hands"), it.getString("feet"), it.getString("face"))
-  } }
- }
+ val poses: List<Pose> = PoseCatalog.load(context.assets)
  suspend fun save(pose: SavedPose):Boolean = db.withTransaction {
   if(db.saved().contains(pose.poseId)>0 || db.saved().count()<FREE_FAVORITE_LIMIT) { db.saved().save(pose); true } else false
  }

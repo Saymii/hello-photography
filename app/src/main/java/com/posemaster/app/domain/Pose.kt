@@ -1,6 +1,16 @@
 package com.posemaster.app.domain
 
-data class Pose(val id: Int, val name: String, val category: String, val subject: String, val style: String, val location: String, val position: String, val difficulty: String, val premium: Boolean, val steps: String, val hands: String, val feet: String, val face: String) {
+/** A licensed reference bundled with the app; it never points to a network URL. */
+data class PosePhoto(
+ val assetPath: String,
+ val altText: String,
+ val source: String,
+ val credit: String,
+ val license: String,
+ val collectionId: String,
+)
+
+data class Pose(val id: Int, val name: String, val category: String, val subject: String, val style: String, val location: String, val position: String, val difficulty: String, val premium: Boolean, val steps: String, val hands: String, val feet: String, val face: String, val photo: PosePhoto? = null) {
  val angle get() = if(position == "Close-up") "Eye level; keep the lens parallel to the face." else "Start at chest height, then adjust without tilting the horizon."
  val lighting get() = "Use soft window light or open shade, with the face angled toward the light. Avoid staring into direct sun."
  val mistakes get() = "Avoid locked joints, forced expressions, cropped fingers, and a busy background. Adapt every movement for comfort."
